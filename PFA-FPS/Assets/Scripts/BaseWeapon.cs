@@ -8,7 +8,7 @@ public class BaseWeapon : MonoBehaviour
     public float range = 100f;
     public float fireRate = 15f;
     public float impactForce = 30f;
-
+    public LayerMask layerToHit;
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
@@ -28,7 +28,7 @@ public class BaseWeapon : MonoBehaviour
     {
         muzzleFlash.Play();
         RaycastHit hit;
-        if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, layerToHit))
         {
             Debug.Log(hit.transform.name);
             Target target = hit.transform.GetComponent<Target>();
