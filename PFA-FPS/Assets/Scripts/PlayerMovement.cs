@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
 
     [SerializeField] private Vector3 velocity;
-    [SerializeField] private bool isGrounded;
+    [SerializeField] public bool isGrounded;
 
     
 

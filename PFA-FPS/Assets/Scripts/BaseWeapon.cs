@@ -4,16 +4,37 @@ using UnityEngine;
 
 public class BaseWeapon : MonoBehaviour
 {
-    public float damage = 10f;
-    public float range = 100f;
-    public float fireRate = 15f;
-    public float impactForce = 30f;
+    public WeaponData weaponData;
+    float damage;
+    float range ;
+    float fireRate;
+    float impactForce;
     public LayerMask layerToHit;
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;
+   
     public GameObject impactEffect;
+    
 
+    public WeaponRecoil weaponRecoil;
     private float nextTimeToFire = 0f;
+
+    private void Awake()
+    {
+        damage = weaponData.damage;
+        range = weaponData.range;   
+        fireRate = weaponData.fireRate;
+        impactForce = weaponData.impactForce;
+        
+        
+       
+    }
+    public void Start()
+    {
+        weaponRecoil = GameObject.Find("CameraRot/CameraRecoil").GetComponent<WeaponRecoil>();
+    }
+
+
     // Update is called once per frame
     void Update()
     {
@@ -28,6 +49,7 @@ public class BaseWeapon : MonoBehaviour
     {
         muzzleFlash.Play();
         RaycastHit hit;
+        weaponRecoil.RecoilFire();
         if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, layerToHit))
         {
             Debug.Log(hit.transform.name);
