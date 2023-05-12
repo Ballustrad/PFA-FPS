@@ -5,22 +5,27 @@ using UnityEngine;
 
 public class WeaponRecoil : MonoBehaviour
 {
+    public WeaponData weaponData;
     //Rotations
     private Vector3 currentRotation;
     private Vector3 targetRotation;
 
     //Hipfire Recoil
-    [SerializeField] float recoilX;
-    [SerializeField] private float recoilY;
-    [SerializeField] private float recoilZ;
+    [SerializeField] public float recoilX;
+    [SerializeField] public float recoilY;
+    [SerializeField] public float recoilZ;
 
     //Settings
-    [SerializeField] private float snappiness;
-    [SerializeField] private float returnSpeed;
+    [SerializeField] public float snappiness;
+    [SerializeField] public float returnSpeed;
 
-    private void Start()
+    private void Awake()
     {
-        
+        recoilX = weaponData.recoilX;
+        recoilY = weaponData.recoilY;
+        recoilZ = weaponData.recoilZ;
+        snappiness = weaponData.snappiness;
+        returnSpeed = weaponData.returnSpeed;
     }
     private void Update()
     {

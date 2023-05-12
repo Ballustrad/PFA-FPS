@@ -38,5 +38,9 @@ public class WeaponData : ScriptableObject
     public float returnSpeed;
 
 
+   
+    public int maxAmmo;
+    public int reloadTime;
+
 
 }

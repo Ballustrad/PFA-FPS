@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    public CharacterData characterData;
     public CharacterController controller;
 
     public float speed = 12f;
@@ -19,7 +19,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector3 velocity;
     [SerializeField] public bool isGrounded;
 
-    
+    private void Start()
+    {
+        speed = characterData.speed;
+        jumpHeight = characterData.jumpHeight;
+    }
+
 
     // Update is called once per frame
     void Update()

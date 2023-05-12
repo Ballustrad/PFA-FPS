@@ -101,12 +101,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8892a9be5dd3de408952ba96fad5d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 75cad57d3f765d54db509cbfd4d65918, type: 2}
-  recoilX: 0
-  recoilY: 0
-  recoilZ: 0
-  snappiness: 0
-  returnSpeed: 0
+  weaponData: {fileID: 11400000, guid: d7515d71ad8cb954aa152c54aa30d205, type: 2}
+  recoilX: -2
+  recoilY: 2
+  recoilZ: 0.8
+  snappiness: 10
+  returnSpeed: 2
 --- !u!1 &4036898882533928470
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 4036898882533928472}
   - component: {fileID: 4036898882533928473}
   m_Layer: 7
-  m_Name: Normal
+  m_Name: Lourd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a41717eb0de4880419f758ce1194311f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterData: {fileID: 11400000, guid: 9e6c5527628bd0147810e26ba6972514, type: 2}
+  characterData: {fileID: 11400000, guid: b5c62eb927440a04ebb6db809e869021, type: 2}
   controller: {fileID: 4036898882533928472}
   speed: 12
   gravity: -19.62
@@ -700,7 +700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b167547112c5a0045ab89e11b5629d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 75cad57d3f765d54db509cbfd4d65918, type: 2}
+  weaponData: {fileID: 11400000, guid: d7515d71ad8cb954aa152c54aa30d205, type: 2}
   layerToHit:
     serializedVersion: 2
     m_Bits: 320
