@@ -32,7 +32,7 @@ MonoBehaviour:
   tree:
     enabled: 1
     drawOverlayOnColoredPrefabs: 1
-    dividerHeigth: 0
+    dividerHeigth: 3
     baseLevelColor: {r: 0.8301887, g: 0.77440983, b: 0.15977213, a: 1}
     branches:
     - overlayColor: {r: 1, g: 0.44, b: 0.97, a: 0.04}
