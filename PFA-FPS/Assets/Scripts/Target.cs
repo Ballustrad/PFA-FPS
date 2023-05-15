@@ -14,7 +14,8 @@ public class Target : MonoBehaviour
     public void TakeDamage(float amountDamage)
     {
         health -= amountDamage;
-        healthText.text = health.ToString();
+        Debug.Log(health.ToString());
+      healthText.text = health.ToString();
         if (health <= 0f )
         {
             Die();

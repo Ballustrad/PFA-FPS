@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 4036898882533928475}
   - component: {fileID: 4036898882533928472}
   - component: {fileID: 4036898882533928473}
+  - component: {fileID: 5703874060247369998}
   m_Layer: 7
   m_Name: Lourd
   m_TagString: Untagged
@@ -185,6 +186,22 @@ MonoBehaviour:
     m_Bits: 64
   velocity: {x: 0, y: 0, z: 0}
   isGrounded: 0
+--- !u!208 &5703874060247369998
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4036898882533928470}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.52, y: 1.47, z: 1.59}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &4036898882863021336
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,12 +717,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b167547112c5a0045ab89e11b5629d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   weaponData: {fileID: 11400000, guid: d7515d71ad8cb954aa152c54aa30d205, type: 2}
   layerToHit:
     serializedVersion: 2
     m_Bits: 320
   fpsCam: {fileID: 4036898882891250088}
   muzzleFlash: {fileID: 4235550638605786983}
+  currentAmmo: 0
+  maxAmmo: 0
+  reloadTime: 0
+  isReloading: 0
   impactEffect: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7,
     type: 3}
   weaponRecoil: {fileID: 0}

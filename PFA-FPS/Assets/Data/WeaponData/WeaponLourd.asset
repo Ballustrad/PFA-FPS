@@ -15,7 +15,7 @@ MonoBehaviour:
   damage: 7
   range: 100
   fireRate: 16
-  impactForce: 70
+  impactForce: 90
   recoilX: -3
   recoilY: 1.6
   recoilZ: 0.2
