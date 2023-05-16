@@ -11,25 +11,26 @@ public class MenuManager : MonoBehaviour
 
     public void PlayGame()
     {
+        Debug.Log("Play!");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void OpenOptionsPanel()
+    public void OpenInstructionsPanel()
     {
-        InstructionsPanel.SetActive(true);
         CloseAllPanels();
+        InstructionsPanel.SetActive(true);
     }
 
     public void OpenSettingsPanel()
     {
-        SettingsPanel.SetActive(true);
         CloseAllPanels();
+        SettingsPanel.SetActive(true);
     }
 
     public void OpenCreditsPanel()
     {
-        CreditsPanel.SetActive(true);
         CloseAllPanels();
+        CreditsPanel.SetActive(true);
     }
 
     public void CloseAllPanels()
