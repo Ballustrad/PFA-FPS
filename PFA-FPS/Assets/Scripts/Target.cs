@@ -5,25 +5,37 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public float health = 50f;
-    public TextMeshProUGUI healthText;
+
+    public float maxHealth = 50f;
+    public float currentHealth;
+    
+    public UIHealthBar healthBar;
+   
+
     private void Awake()
     {
-        healthText.text = health.ToString();
+       
+        currentHealth = maxHealth;
     }
     public void TakeDamage(float amountDamage)
     {
-        health -= amountDamage;
-        Debug.Log(health.ToString());
-      healthText.text = health.ToString();
-        if (health <= 0f )
+        currentHealth -= amountDamage;
+        healthBar.SetHealthBarPercentage(currentHealth / maxHealth);
+        
+      
+        if (currentHealth <= 0f )
         {
             Die();
+            healthBar.gameObject.SetActive(false);
         }
+        
+
     }
 
     private void Die()
     {
         Destroy(gameObject);
     }
+
+    
 }
