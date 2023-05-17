@@ -766,7 +766,7 @@ MonoBehaviour:
   BulletSpawn: {fileID: 375913582303881138}
   BulletPrefab: {fileID: 6122646271653104550, guid: df52ece537801ea4d973407d9e572348,
     type: 3}
-  BulletSpeed: 10
+  BulletSpeed: 100
   DestroyBulletAfterSeconds: 2
 --- !u!4 &4036898882662117964 stripped
 Transform:

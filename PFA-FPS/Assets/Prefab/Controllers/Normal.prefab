@@ -29,7 +29,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4036898881885781490}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4036898881885781491
 GameObject:
@@ -60,8 +60,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 366230906611307276}
   - {fileID: 1437122023690495674}
+  - {fileID: 366230906611307276}
   m_Father: {fileID: 4036898882891250091}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -680,7 +680,7 @@ PrefabInstance:
     - target: {fileID: 4702177040652980963, guid: c5bb56f6c317c3c4ab6f701455711177,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4702177040652980963, guid: c5bb56f6c317c3c4ab6f701455711177,
         type: 3}
@@ -780,5 +780,5 @@ MonoBehaviour:
   BulletSpawn: {fileID: 366230906611307276}
   BulletPrefab: {fileID: 6122646271653104550, guid: df52ece537801ea4d973407d9e572348,
     type: 3}
-  BulletSpeed: 10
+  BulletSpeed: 100
   DestroyBulletAfterSeconds: 2
