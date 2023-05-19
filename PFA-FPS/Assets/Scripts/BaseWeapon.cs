@@ -84,30 +84,22 @@ public class BaseWeapon : MonoBehaviour
             isReloading =false;
         
     }
-
-    private void Shoot()
+    public Transform BulletSpawn;
+    public GameObject BulletPrefab;
+    public float BulletSpeed = 10f, DestroyBulletAfterSeconds = 2f;
+    public void Shoot()
     {
-        muzzleFlash.Play();
-        RaycastHit hit;
-        currentAmmo--;
-        gameManager.ammo.text = currentAmmo.ToString() + "/" + maxAmmo.ToString();
-        weaponRecoil.RecoilFire();
-        if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, layerToHit))
-        {
-            Debug.Log(hit.transform.name);
-            Target target = hit.transform.GetComponent<Target>();
-            if (target != null)
-            {
-                target.TakeDamage(damage);
-            }
+         muzzleFlash.Play();
+         
+         currentAmmo--;
+         gameManager.ammo.text = currentAmmo.ToString() + "/" + maxAmmo.ToString();
+         weaponRecoil.RecoilFire();
 
-            /*if (hit.rigidbody != null)
-            {
-                hit.rigidbody.AddForce(-hit.normal * impactForce);
-            }*/
+         
+        var bullet = (GameObject)Instantiate(BulletPrefab, BulletSpawn.position, BulletSpawn.rotation);
 
-            GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            Destroy(impactGO, 2f);
-        }
+        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * BulletSpeed;
+
+        Destroy(bullet, DestroyBulletAfterSeconds);
     }
 }

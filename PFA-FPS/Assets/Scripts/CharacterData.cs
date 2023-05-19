@@ -26,5 +26,6 @@ public class CharacterData : ScriptableObject
     public float jumpHeight;
 
     public float health;
+
     
 }

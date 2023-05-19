@@ -10,7 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 12f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
-
+    public float health;
+    public float damageReduction = 0;
     public Transform groundCheck;
 
     public float groundDistance = 0.4f;
@@ -51,4 +52,6 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
     }
+
+    
 }
