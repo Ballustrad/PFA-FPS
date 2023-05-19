@@ -7,25 +7,29 @@ public class ThreeDPointer : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip pointerEnterSound;
-    public GameObject initialPosition;
-    public GameObject newPosition;
 
-   
-        public void ThreeDPointerEnter(GameObject newPosition)
-        {
+    public Transform newPosition;
+    public Transform initialPosition;
+
+    private Vector3 originalPosition;
+
+    private void Start()
+    {
+        originalPosition = transform.position;
+    }
+
+    public void ThreeDPointerEnter()
+    {
         Debug.Log("Pointer Enter");
-            audioSource.PlayOneShot(pointerEnterSound);
-            Vector3 currentPosition = transform.position;
-            currentPosition.z = newPosition.transform.position.z;
-            transform.position = currentPosition;
-        }
+        audioSource.PlayOneShot(pointerEnterSound);
+        Vector3 newPositionX = new Vector3(newPosition.position.x, originalPosition.y, originalPosition.z);
+        transform.position = newPositionX;
+    }
 
-        public void ThreeDPointerExit(GameObject initialPosition)
-        {
-            Debug.Log("Pointer Exit");
-            Vector3 currentPosition = transform.position;
-            currentPosition.z = initialPosition.transform.position.z;
-            transform.position = currentPosition;
-        }
- }
-
+    public void ThreeDPointerExit()
+    {
+        Debug.Log("Pointer Exit");
+        Vector3 initialPositionX = new Vector3(initialPosition.position.x, originalPosition.y, originalPosition.z);
+        transform.position = initialPositionX;
+    }
+}
