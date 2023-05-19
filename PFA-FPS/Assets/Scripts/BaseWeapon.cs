@@ -102,4 +102,9 @@ public class BaseWeapon : MonoBehaviour
 
         Destroy(bullet, DestroyBulletAfterSeconds);
     }
+
+    internal void ModifyFireRate(float v)
+    {
+        throw new NotImplementedException();
+    }
 }

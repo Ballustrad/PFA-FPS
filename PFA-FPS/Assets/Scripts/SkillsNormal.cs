@@ -14,6 +14,7 @@ public class SkillsNormal : MonoBehaviour
     public LayerMask layerToHit;
     public float grenadeCooldown = 15f;
     private bool grenadeAvailable = true;
+    public GameObject grenadePara;
     #endregion
 
    
@@ -27,7 +28,7 @@ public class SkillsNormal : MonoBehaviour
     public void ThrowGrenade()
     {
         // Créer une instance de l'objet de grenade et la positionner à la position du joueur
-        GameObject grenade = Instantiate(gameObject, transform.position, transform.rotation);
+        GameObject grenade = Instantiate(grenadePara, transform.position, transform.rotation);
         // Ajouter une force à la grenade pour la lancer
         grenade.GetComponent<Rigidbody>().AddForce(transform.forward * 500f);
 
@@ -53,8 +54,8 @@ public class SkillsNormal : MonoBehaviour
         }
 
         // Jouer la particule et le son d'explosion
-        Instantiate(explosionParticle, grenade.transform.position, grenade.transform.rotation);
-        AudioSource.PlayClipAtPoint(explosionSound, grenade.transform.position);
+        //Instantiate(explosionParticle, grenade.transform.position, grenade.transform.rotation);
+       //AudioSource.PlayClipAtPoint(explosionSound, grenade.transform.position);
 
         // Détruire la grenade
         Destroy(grenade);
@@ -108,5 +109,47 @@ public class SkillsNormal : MonoBehaviour
             grenadeAvailable = false;
             StartCoroutine(GrenadeCooldown());
         }
+        if (Input.GetKeyDown(KeyCode.E) && !isOnCooldownMark)
+        {
+            StartCoroutine(UseMarkAbility());
+        }
+    }
+
+
+
+
+
+        public float damageIncreasePercentage = 20f;
+    public float durationMark = 4f;
+    public float cooldownMark = 10f;
+    private bool isOnCooldownMark = false;
+
+    
+
+    private IEnumerator UseMarkAbility()
+    {
+        // Lancer la compétence
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit))
+        {
+            if (hit.collider.CompareTag("Enemy"))
+            {
+                Target enemy = hit.collider.GetComponent<Target>();
+                if (enemy != null)
+                {
+                    // Appliquer la marque
+                    enemy.ApplyMark(20);
+                    yield return new WaitForSeconds(durationMark);
+                    // Retirer la marque après la durée
+                    enemy.RemoveMark();
+                }
+            }
+        }
+
+        // Démarrer le temps de recharge
+        isOnCooldownMark = true;
+        yield return new WaitForSeconds(cooldownMark);
+        isOnCooldownMark = false;
     }
 }
+

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,7 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 12f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
-    public float health;
+    public float currentHealth;
+    public float maxHealth;
     public float damageReduction = 0;
     public Transform groundCheck;
 
@@ -24,9 +26,20 @@ public class PlayerMovement : MonoBehaviour
     {
         speed = characterData.speed;
         jumpHeight = characterData.jumpHeight;
+        maxHealth = characterData.health;
+        currentHealth = maxHealth;
     }
 
+    public void Healing(float amount)
+    {
+        currentHealth = currentHealth + maxHealth * amount;
+    }
 
+    public void TakeDamage(float damage)
+    {
+        damage = damage - damage * 100 / 35;
+        currentHealth = currentHealth - damage;
+    }
     // Update is called once per frame
     void Update()
     {
