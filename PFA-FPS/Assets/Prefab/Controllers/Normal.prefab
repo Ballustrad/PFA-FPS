@@ -31,6 +31,37 @@ Transform:
   m_Father: {fileID: 4036898881885781490}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1449488687614744342
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 353217106158345291}
+  m_Layer: 7
+  m_Name: GrenadeLaunch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &353217106158345291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449488687614744342}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.19, y: -0.116000175, z: 0.644}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4036898881885781490}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4036898881885781491
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,6 +93,7 @@ Transform:
   m_Children:
   - {fileID: 1437122023690495674}
   - {fileID: 366230906611307276}
+  - {fileID: 353217106158345291}
   m_Father: {fileID: 4036898882891250091}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -208,19 +240,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paralysisDuration: 5
-  explosionRadius: 5
-  explosionDelay: 3
+  explosionRadius: 10
+  explosionDelay: 1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   explosionParticle: {fileID: 0}
   explosionSound: {fileID: 0}
   layerToHit:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   grenadeCooldown: 15
   grenadePara: {fileID: 7869448456036739658, guid: 54a6a70da386d844da984ac649cd6ee5,
     type: 3}
+  spawnPointGrenade: {fileID: 1449488687614744342}
   duration: 5
   reductionAmount: 0.2
   cooldown: 15
@@ -244,7 +277,8 @@ MonoBehaviour:
   speed: 12
   gravity: -19.62
   jumpHeight: 3
-  health: 0
+  currentHealth: 0
+  maxHealth: 0
   damageReduction: 0
   groundCheck: {fileID: 4036898883422061363}
   groundDistance: 0.4
@@ -253,6 +287,8 @@ MonoBehaviour:
     m_Bits: 64
   velocity: {x: 0, y: 0, z: 0}
   isGrounded: 0
+  foregroundImage: {fileID: 0}
+  backgroundImage: {fileID: 0}
 --- !u!208 &227298815499674095
 NavMeshObstacle:
   m_ObjectHideFlags: 0

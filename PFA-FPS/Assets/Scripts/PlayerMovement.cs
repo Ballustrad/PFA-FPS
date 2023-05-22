@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameManager gameManager;
     public CharacterData characterData;
     public CharacterController controller;
 
@@ -21,14 +23,21 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private Vector3 velocity;
     [SerializeField] public bool isGrounded;
-
+    public Image foregroundImage;
+    public Image backgroundImage;
     private void Start()
     {
+         gameManager = GameManager.Instance;
         speed = characterData.speed;
         jumpHeight = characterData.jumpHeight;
         maxHealth = characterData.health;
         currentHealth = maxHealth;
+        gameManager.iconSkillRightClick = characterData.iconSkillRightClick;
+        gameManager.iconSkillLeftClick = characterData.iconSkillLeftClick;
+        gameManager.iconSkillE = characterData.iconSkillE;
+        gameManager.iconSkillA = characterData.iconSkillA;
     }
+    
 
     public void Healing(float amount)
     {
@@ -37,8 +46,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        damage = damage - damage * 100 / 35;
+        damage = damage - damage * 100 / damageReduction;
         currentHealth = currentHealth - damage;
+        gameManager.SetHealthBarPercentagePlayer(currentHealth/maxHealth);
     }
     // Update is called once per frame
     void Update()

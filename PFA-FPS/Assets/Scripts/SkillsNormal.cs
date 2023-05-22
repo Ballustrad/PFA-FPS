@@ -6,8 +6,8 @@ public class SkillsNormal : MonoBehaviour
 {
     #region
     public float paralysisDuration = 5f;
-    public float explosionRadius = 5f;
-    public float explosionDelay = 3f;
+    public float explosionRadius = 10f;
+    public float explosionDelay = 1f;
     public LayerMask enemyLayer;
     public GameObject explosionParticle;
     public AudioClip explosionSound;
@@ -15,6 +15,7 @@ public class SkillsNormal : MonoBehaviour
     public float grenadeCooldown = 15f;
     private bool grenadeAvailable = true;
     public GameObject grenadePara;
+    public GameObject spawnPointGrenade;
     #endregion
 
    
@@ -28,9 +29,9 @@ public class SkillsNormal : MonoBehaviour
     public void ThrowGrenade()
     {
         // Créer une instance de l'objet de grenade et la positionner à la position du joueur
-        GameObject grenade = Instantiate(grenadePara, transform.position, transform.rotation);
+        GameObject grenade = Instantiate(grenadePara, spawnPointGrenade.transform.position, transform.rotation);
         // Ajouter une force à la grenade pour la lancer
-        grenade.GetComponent<Rigidbody>().AddForce(transform.forward * 500f);
+        grenade.GetComponent<Rigidbody>().AddForce(transform.forward * 1000f);
 
         // Programmer l'explosion de la grenade après un délai
         StartCoroutine(ExplodeGrenade(grenade));

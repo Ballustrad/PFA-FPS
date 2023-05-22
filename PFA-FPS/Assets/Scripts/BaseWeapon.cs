@@ -89,7 +89,8 @@ public class BaseWeapon : MonoBehaviour
     public float BulletSpeed = 10f, DestroyBulletAfterSeconds = 2f;
     public void Shoot()
     {
-         muzzleFlash.Play();
+        if (muzzleFlash != null) { muzzleFlash.Play(); }
+         
          
          currentAmmo--;
          gameManager.ammo.text = currentAmmo.ToString() + "/" + maxAmmo.ToString();
@@ -104,6 +105,21 @@ public class BaseWeapon : MonoBehaviour
     }
 
     internal void ModifyFireRate(float v)
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void ModifyReloadSpeed(float v)
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void ResetFireRate()
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void ResetReloadSpeed()
     {
         throw new NotImplementedException();
     }

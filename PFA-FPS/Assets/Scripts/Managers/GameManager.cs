@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -14,16 +15,30 @@ public class GameManager : Singleton<GameManager>
     public Transform parent;
     public Transform currentPlayer;
     public GameObject player;
-    
+    public Image backgroundImageHealth;
+    public Image foreGroundImageHealth;
+    public GameObject uiHealthBar;
+    public GameObject uiIconSkills;
+    public Image iconSkillLeftClick;
+    public Image iconSkillRightClick;
+    public Image iconSkillA;
+    public Image iconSkillE;
 
     public TextMeshProUGUI ammo;
 
-
+    public void SetHealthBarPercentagePlayer(float percentage)
+    {
+        float parentWidth = GetComponent<RectTransform>().rect.width;
+        float width = parentWidth * percentage;
+        foreGroundImageHealth.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+    }
     public void SelectCharacter(GameObject name)
     {
         GameObject player = Instantiate(name, spawnPoint, Quaternion.identity, parent);
         panelSelection.SetActive(false);
         currentPlayer = player.transform;
+        uiHealthBar.SetActive(true);
+        uiIconSkills.SetActive(true);
         
     }
 
