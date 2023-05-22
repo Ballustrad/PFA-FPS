@@ -23,39 +23,56 @@ public class GameManager : Singleton<GameManager>
     public Image iconSkillRightClick;
     public Image iconSkillA;
     public Image iconSkillE;
-
     public TextMeshProUGUI ammo;
+    private float parentWidth;
+    private float width;
+    public Slider slider;
+    
 
-    public void SetHealthBarPercentagePlayer(float percentage)
+   /*public void SetHealthBarPercentagePlayer(float percentage)
     {
-        float parentWidth = GetComponent<RectTransform>().rect.width;
-        float width = parentWidth * percentage;
+    
+        width = parentWidth * (1 / percentage);
+      
         foreGroundImageHealth.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
-    }
+    }*/
     public void SelectCharacter(GameObject name)
     {
         GameObject player = Instantiate(name, spawnPoint, Quaternion.identity, parent);
         panelSelection.SetActive(false);
         currentPlayer = player.transform;
-        uiHealthBar.SetActive(true);
+       // uiHealthBar.SetActive(true);
         uiIconSkills.SetActive(true);
         
     }
 
-    public GameObject objectToSpawn;
-    public Vector3 spawnPosition;
-    public float spawnInterval = 5f;
-    public Transform enemyParent;
-    private float lastSpawnTime = 0f;
+   
+    
 
-    void Update()
+
+    public GameObject[] enemyPrefabs; // Tableau des prefabs des ennemis disponibles
+    public Transform[] spawnPoints; // Tableau des emplacements de spawn
+    public float spawnInterval = 5.0f; // Intervalle entre chaque spawn
+    public float initialDelay = 2.0f; // Délai initial avant le premier spawn
+
+    private void Start()
     {
-        if (Time.time - lastSpawnTime >= spawnInterval)
-        {
-            Instantiate(objectToSpawn, spawnPosition, Quaternion.identity, enemyParent);
-            lastSpawnTime = Time.time;
-        }
-        
+        parentWidth = uiHealthBar.GetComponent<RectTransform>().rect.width;
+        InvokeRepeating("SpawnEnemy", initialDelay, spawnInterval);
     }
+
+    private void SpawnEnemy()
+    {
+        // Sélectionne un emplacement de spawn aléatoire
+        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+
+        // Sélectionne un type d'ennemi aléatoire
+        GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+
+        // Instancie l'ennemi au point de spawn sélectionné
+        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+    }
+
+  
     
 }

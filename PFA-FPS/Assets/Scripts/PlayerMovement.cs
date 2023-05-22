@@ -46,9 +46,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        damage = damage - damage * 100 / damageReduction;
+        damage = damage - damage * damageReduction / 100;
         currentHealth = currentHealth - damage;
-        gameManager.SetHealthBarPercentagePlayer(currentHealth/maxHealth);
+        Debug.Log("current Health:" + currentHealth);
+
+        gameManager.slider.value = (currentHealth - damage) / 300f;
+
+       
+       /* float percentage = currentHealth * 100 / maxHealth;
+        
+        gameManager.SetHealthBarPercentagePlayer(percentage);*/
     }
     // Update is called once per frame
     void Update()

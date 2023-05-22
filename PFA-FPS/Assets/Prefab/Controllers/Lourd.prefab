@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 5703874060247369998}
   m_Layer: 7
   m_Name: Lourd
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,11 +175,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a41717eb0de4880419f758ce1194311f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   characterData: {fileID: 11400000, guid: b5c62eb927440a04ebb6db809e869021, type: 2}
   controller: {fileID: 4036898882533928472}
   speed: 12
   gravity: -19.62
   jumpHeight: 3
+  currentHealth: 0
+  maxHealth: 0
+  damageReduction: 0
   groundCheck: {fileID: 4036898883422061363}
   groundDistance: 0.4
   groundMask:
@@ -187,6 +191,8 @@ MonoBehaviour:
     m_Bits: 64
   velocity: {x: 0, y: 0, z: 0}
   isGrounded: 0
+  foregroundImage: {fileID: 0}
+  backgroundImage: {fileID: 0}
 --- !u!208 &5703874060247369998
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -217,7 +223,7 @@ GameObject:
   - component: {fileID: 4036898882863021338}
   m_Layer: 7
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -295,12 +301,12 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4036898882863021336}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
+  m_Radius: 2.645494
+  m_Height: 3.5273256
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.12074311, y: 0, z: 0.12424866}
 --- !u!1 &4036898882891250086
 GameObject:
   m_ObjectHideFlags: 0
