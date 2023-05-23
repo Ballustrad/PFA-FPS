@@ -340,7 +340,10 @@ MonoBehaviour:
   maxHealth: 50
   currentHealth: 0
   damageMultiplier: 1
+  deathExplosion: {fileID: 1421917349152839519, guid: afe70fc13c6710e49bfb563d816be9cc,
+    type: 3}
   healthBar: {fileID: 4111781496764558777}
+  gameManager: {fileID: 0}
 --- !u!54 &6170811578261601246
 Rigidbody:
   m_ObjectHideFlags: 0

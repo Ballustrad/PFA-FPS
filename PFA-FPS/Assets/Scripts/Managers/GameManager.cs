@@ -15,38 +15,33 @@ public class GameManager : Singleton<GameManager>
     public Transform parent;
     public Transform currentPlayer;
     public GameObject player;
-    public Image backgroundImageHealth;
-    public Image foreGroundImageHealth;
-    public GameObject uiHealthBar;
+   
     public GameObject uiIconSkills;
     public Image iconSkillLeftClick;
     public Image iconSkillRightClick;
     public Image iconSkillA;
     public Image iconSkillE;
     public TextMeshProUGUI ammo;
-    private float parentWidth;
-    private float width;
-    public Slider slider;
-    
+    public AudioClip deathSound; // Son à jouer à la mort de l'ennemi
+    public AudioSource audioSource;
 
-   /*public void SetHealthBarPercentagePlayer(float percentage)
-    {
-    
-        width = parentWidth * (1 / percentage);
-      
-        foreGroundImageHealth.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
-    }*/
     public void SelectCharacter(GameObject name)
     {
         GameObject player = Instantiate(name, spawnPoint, Quaternion.identity, parent);
         panelSelection.SetActive(false);
         currentPlayer = player.transform;
-       // uiHealthBar.SetActive(true);
+      
         uiIconSkills.SetActive(true);
         
     }
 
-   
+   public void EnemyDeathSound()
+    {
+        if (deathSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(deathSound);
+        }
+    }
     
 
 
@@ -57,7 +52,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        parentWidth = uiHealthBar.GetComponent<RectTransform>().rect.width;
+        
         InvokeRepeating("SpawnEnemy", initialDelay, spawnInterval);
     }
 
