@@ -11,13 +11,21 @@ public class Cac : MonoBehaviour
     private bool canAttack = true;
     public PlayerMovement playerMovement;
     public GameManager gameManager;
-    
+
     public void Awake()
     {
         gameManager = GameManager.Instance;
-        playerMovement = gameManager.currentPlayer.GetComponent<PlayerMovement>();
+      
+        if (gameManager.currentPlayer != null)
+        {
+            playerMovement = gameManager.currentPlayer.GetComponent<PlayerMovement>();
+        }
+        else
+        {
+            
+        }
     }
-    
+
 
     private void OnCollisionStay(Collision collision)
     {

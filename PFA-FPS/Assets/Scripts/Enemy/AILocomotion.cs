@@ -13,30 +13,33 @@ public class AILocomotion : MonoBehaviour
     public float maxDistance = 1.0f;
     float timer = 0.0f;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         gameManager = GameManager.Instance;
         agent = GetComponent<NavMeshAgent>();
 
-        playerTransform = gameManager.currentPlayer;
-
+        if (gameManager != null)
+        {
+            playerTransform = gameManager.currentPlayer;
+        }
     }
 
-   
-    // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
-        if (timer < 0.0f)
+
+        if (playerTransform != null && timer < 0.0f)
         {
-            float sqDistance = (playerTransform.position - agent.destination).sqrMagnitude;
-            if (sqDistance > maxDistance*maxDistance)
+            if (playerTransform != null && playerTransform.gameObject.activeSelf)
             {
-                agent.destination = playerTransform.position;
+                float sqDistance = (playerTransform.position - agent.destination).sqrMagnitude;
+                if (sqDistance > maxDistance * maxDistance)
+                {
+                    agent.destination = playerTransform.position;
+                }
             }
+
             timer = maxTime;
         }
-        
-       
     }
 }

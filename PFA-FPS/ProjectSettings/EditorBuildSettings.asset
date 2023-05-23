@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gameplay Loop/MainMenu.unity
     guid: c8ca49639ab358c4ab09d7cc6cd00e9a
+  - enabled: 1
+    path: Assets/Scenes/Gameplay Loop/Lobby.unity
+    guid: 1323b77e7abd9b64e84758a2b9bf501f
   m_configObjects: {}

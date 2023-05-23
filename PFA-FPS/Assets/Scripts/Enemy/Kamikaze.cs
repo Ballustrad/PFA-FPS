@@ -14,10 +14,18 @@ public class Kamikaze : MonoBehaviour
     public void Awake()
     {
         gameManager = GameManager.Instance;
-        playerMovement = gameManager.currentPlayer.GetComponent<PlayerMovement>();
+
+        if (gameManager.currentPlayer != null)
+        {
+            playerMovement = gameManager.currentPlayer.GetComponent<PlayerMovement>();
+        }
+        else
+        {
+            Debug.LogError("currentPlayer is null in GameManager.");
+        }
     }
-   
-   
+
+
     private void OnTriggerEnter(UnityEngine.Collider other)
     {
         

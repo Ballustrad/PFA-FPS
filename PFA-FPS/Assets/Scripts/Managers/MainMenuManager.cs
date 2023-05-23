@@ -67,6 +67,6 @@ public class MainMenuManager : Singleton<MainMenuManager>
     {
         currentPlayerMiddleMan.SetCurrentPlayerTo(name);
         PlayerPrefs.SetString("SelectedPlayer", _name);
-        SceneManager.LoadScene("MainLevel");
+        SceneManager.LoadScene("Lobby");
     }
 }

@@ -9,8 +9,8 @@ public class SkillsNormal : MonoBehaviour
     public float explosionRadius = 10f;
     public float explosionDelay = 1f;
     public LayerMask enemyLayer;
-    public GameObject explosionParticle;
-    public AudioClip explosionSound;
+    //public GameObject explosionParticle;
+   // public AudioClip explosionSound;
     public LayerMask layerToHit;
     public float grenadeCooldown = 15f;
     private bool grenadeAvailable = true;

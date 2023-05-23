@@ -267,7 +267,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6170811578261601240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.38, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -342,8 +342,6 @@ MonoBehaviour:
   damageMultiplier: 1
   deathExplosion: {fileID: 1421917349152839519, guid: afe70fc13c6710e49bfb563d816be9cc,
     type: 3}
-  deathSound: {fileID: 8300000, guid: 2af5aa0c352b26e45ad6f85a7855045a, type: 3}
-  audioSource: {fileID: 0}
   healthBar: {fileID: 4111781496764558777}
   gameManager: {fileID: 0}
 --- !u!54 &6170811578261601246
