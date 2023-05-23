@@ -20,7 +20,8 @@ public class BaseWeapon : MonoBehaviour
     public int reloadTime;
     public bool isReloading = false;
     public GameObject impactEffect;
-    
+    public AudioSource audioSource;
+    public AudioClip shootSound;
 
     public WeaponRecoil weaponRecoil;
     private float nextTimeToFire = 0f;
@@ -90,9 +91,12 @@ public class BaseWeapon : MonoBehaviour
     public void Shoot()
     {
         if (muzzleFlash != null) { muzzleFlash.Play(); }
-         
-         
-         currentAmmo--;
+
+        if (shootSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(shootSound);
+        }
+        currentAmmo--;
          gameManager.ammo.text = currentAmmo.ToString() + "/" + maxAmmo.ToString();
          weaponRecoil.RecoilFire();
 

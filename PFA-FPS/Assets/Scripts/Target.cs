@@ -12,13 +12,15 @@ public class Target : MonoBehaviour
     public float maxHealth = 50f;
     public float currentHealth;
     public float damageMultiplier = 1f;
-
+    public GameObject deathExplosion;
+   
     public UIHealthBar healthBar;
+    public GameManager gameManager;
 
 
     private void Awake()
     {
-
+        gameManager = GameManager.Instance;
         currentHealth = maxHealth;
         enemyRigidbody = GetComponent<Rigidbody>();
     }
@@ -31,6 +33,7 @@ public class Target : MonoBehaviour
         if (currentHealth <= 0f)
         {
             Die();
+            
             healthBar.gameObject.SetActive(false);
         }
 
@@ -72,8 +75,10 @@ public class Target : MonoBehaviour
         // Réinitialise la variable isParalyzed
         isParalyzed = false;
     }
-    private void Die()
+    public void Die()
     {
+        Instantiate(deathExplosion, transform.position, Quaternion.identity);
+        gameManager.EnemyDeathSound();
         Destroy(gameObject);
     }
 

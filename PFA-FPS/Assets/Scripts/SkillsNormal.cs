@@ -64,7 +64,7 @@ public class SkillsNormal : MonoBehaviour
 
 
     public float duration = 5f;
-    public float reductionAmount = 0.2f;
+    public float reductionAmount = 15f;
     public float cooldown = 15f;
     private bool isOnCooldown = false;
     private float cooldownTimer = 0f;
@@ -120,7 +120,7 @@ public class SkillsNormal : MonoBehaviour
 
 
 
-        public float damageIncreasePercentage = 20f;
+    public float damageIncreasePercentage = 20f;
     public float durationMark = 4f;
     public float cooldownMark = 10f;
     private bool isOnCooldownMark = false;

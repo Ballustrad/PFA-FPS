@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
@@ -46,10 +47,21 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        damage = damage - damage * 100 / damageReduction;
+        damage = damage - damageReduction;
         currentHealth = currentHealth - damage;
-        gameManager.SetHealthBarPercentagePlayer(currentHealth/maxHealth);
+        
+        if (currentHealth < 0 )
+        {
+            Die();
+        }
+  
     }
+
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
+
     // Update is called once per frame
     void Update()
     {
