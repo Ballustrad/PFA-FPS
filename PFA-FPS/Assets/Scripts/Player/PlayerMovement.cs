@@ -24,8 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private Vector3 velocity;
     [SerializeField] public bool isGrounded;
-    public Image foregroundImage;
-    public Image backgroundImage;
+   
     private void Start()
     {
          gameManager = GameManager.Instance;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : Singleton<MainMenuManager>
 {
@@ -9,7 +10,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
     public GameObject HowToPlay;
     public GameObject Credits;
     public GameObject Selection;
-   
+    public CurrentPlayerMiddleMan currentPlayerMiddleMan;
 
     public void Quit()
     {
@@ -60,5 +61,12 @@ public class MainMenuManager : Singleton<MainMenuManager>
             Selection.SetActive(false);
         }
 
+    }
+
+    public void PlayerSelected(string _name)
+    {
+        currentPlayerMiddleMan.SetCurrentPlayerTo(name);
+        PlayerPrefs.SetString("SelectedPlayer", _name);
+        SceneManager.LoadScene("MainLevel");
     }
 }
