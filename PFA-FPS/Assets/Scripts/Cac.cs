@@ -17,11 +17,7 @@ public class Cac : MonoBehaviour
         gameManager = GameManager.Instance;
         playerMovement = gameManager.currentPlayer.GetComponent<PlayerMovement>();
     }
-    private void Update()
-    {
-        transform.LookAt(GameManager.Instance.currentPlayer);
-        transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
-    }
+    
 
     private void OnCollisionStay(Collision collision)
     {

@@ -16,14 +16,7 @@ public class Kamikaze : MonoBehaviour
         gameManager = GameManager.Instance;
         playerMovement = gameManager.currentPlayer.GetComponent<PlayerMovement>();
     }
-    private void Update()
-    {
-        if (!isExploding)
-        {
-            transform.LookAt(gameManager.currentPlayer);
-            transform.Translate(Vector3.forward * Time.deltaTime);
-        }
-    }
+   
    
     private void OnTriggerEnter(UnityEngine.Collider other)
     {
