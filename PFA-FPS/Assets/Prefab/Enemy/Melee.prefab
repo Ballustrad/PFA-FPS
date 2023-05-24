@@ -344,6 +344,8 @@ MonoBehaviour:
     type: 3}
   healthBar: {fileID: 4111781496764558777}
   gameManager: {fileID: 0}
+  damageTextPrefab: {fileID: 3583796486341815643, guid: a73b6fdb49a44754f8e5a9b7619c231c,
+    type: 3}
 --- !u!195 &3262494089806992652
 NavMeshAgent:
   m_ObjectHideFlags: 0

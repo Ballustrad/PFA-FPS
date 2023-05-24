@@ -108,11 +108,11 @@ public class SkillsFast : MonoBehaviour
     private float dashTimer = 0f;
     private float dashCooldownTimer = 0f;
     private Vector3 dashStartPosition;
-
+    public GameObject dashPrefab;
     public CharacterController controller;
 
 
-
+    private GameObject dashVFX;
 
     private void StartDash()
     {
@@ -129,15 +129,21 @@ public class SkillsFast : MonoBehaviour
         // Appliquer une force pour effectuer le dash
         Vector3 dashDirection = transform.forward; // Direction du dash (peut être modifiée selon vos besoins)
         controller.Move(dashDirection * dashDistance);
+
+        dashVFX = Instantiate(dashPrefab, transform.position, transform.rotation);
     }
 
     private void Dash()
     {
         dashTimer -= Time.deltaTime;
-
+        Instantiate(dashPrefab);
         if (dashTimer <= 0f)
         {
             isDashing = false;
+            if (dashVFX != null)
+            {
+                Destroy(dashVFX);
+            }
         }
     }
 }

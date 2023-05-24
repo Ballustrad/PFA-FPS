@@ -29,11 +29,12 @@ public class Target : MonoBehaviour
         currentHealth -= amountDamage * damageMultiplier;
         healthBar.SetHealthBarPercentage(currentHealth / maxHealth);
 
+        // Affiche les dégâts à côté de l'impact
+        ShowDamageText(amountDamage);
 
         if (currentHealth <= 0f)
         {
             Die();
-            
             healthBar.gameObject.SetActive(false);
         }
 
@@ -110,7 +111,22 @@ public class Target : MonoBehaviour
 
     private Rigidbody enemyRigidbody; // Référence au composant Rigidbody de l'ennemi
 
+    public GameObject damageTextPrefab; // Référence au préfab d'affichage des dégâts
 
+    public void ShowDamageText(float damage)
+    {
+        // Instancie le préfab d'affichage des dégâts à l'endroit de l'impact
+        GameObject damageTextObject = Instantiate(damageTextPrefab, transform.position, Quaternion.identity);
+
+        // Obtient le composant de texte (ou autre élément visuel) du préfab
+        TextMeshPro damageText = damageTextObject.GetComponent<TextMeshPro>();
+
+        // Définit le texte des dégâts à afficher
+        damageText.text = damage.ToString();
+
+        // Détruit le préfab d'affichage des dégâts après un certain délai (par exemple, 1 seconde)
+        Destroy(damageTextObject, 1f);
+    }
 
 
     public void DisableMovementAndAttack(float duration)

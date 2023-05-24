@@ -652,6 +652,8 @@ MonoBehaviour:
   dashDistance: 50
   dashDuration: 1
   dashCooldown: 10
+  dashPrefab: {fileID: 794968728568146383, guid: ff5654df7cf29e9459d8e398dfe96a01,
+    type: 3}
   controller: {fileID: 4036898882533928472}
 --- !u!114 &4036898882533928473
 MonoBehaviour:
