@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+    public HealthBar hpBar;
 
     [SerializeField] private Vector3 velocity;
     [SerializeField] public bool isGrounded;
@@ -32,23 +33,29 @@ public class PlayerMovement : MonoBehaviour
         jumpHeight = characterData.jumpHeight;
         maxHealth = characterData.health;
         currentHealth = maxHealth;
-        gameManager.iconSkillRightClick = characterData.iconSkillRightClick;
+       /* gameManager.iconSkillRightClick = characterData.iconSkillRightClick;
         gameManager.iconSkillLeftClick = characterData.iconSkillLeftClick;
         gameManager.iconSkillE = characterData.iconSkillE;
-        gameManager.iconSkillA = characterData.iconSkillA;
+        gameManager.iconSkillA = characterData.iconSkillA;*/
+        hpBar.SetState(currentHealth, maxHealth);
     }
     
 
     public void Healing(float amount)
     {
-        currentHealth = currentHealth + maxHealth * amount;
+        currentHealth = currentHealth +amount;
+        if (currentHealth > maxHealth) 
+        { 
+            currentHealth = maxHealth;
+        }
+        hpBar.SetState(currentHealth, maxHealth);
     }
 
     public void TakeDamage(float damage)
     {
         damage = damage - damageReduction;
         currentHealth = currentHealth - damage;
-        
+        hpBar.SetState(currentHealth, maxHealth);
         if (currentHealth < 0 )
         {
             Die();
