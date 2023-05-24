@@ -729,7 +729,7 @@ MonoBehaviour:
   duration: 5
   reductionAmount: 0.2
   cooldown: 15
-  damageIncreasePercentage: 20
+  damageIncreasePercentage: 100
   durationMark: 4
   cooldownMark: 10
 --- !u!114 &4036898882533928473

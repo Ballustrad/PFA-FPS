@@ -5,7 +5,7 @@ using UnityEngine;
 public class Cac : MonoBehaviour
 {
     public float movementSpeed = 5.0f;
-    public int meleeDamage = 10;
+    public int meleeDamage = 25;
     public float attackInterval = 1.0f;
 
     private bool canAttack = true;
@@ -27,12 +27,14 @@ public class Cac : MonoBehaviour
     }
 
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (canAttack && collision.gameObject.CompareTag("Player"))
+        Debug.Log("collisionYEs");
+        if (canAttack && other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("playerhit");
             playerMovement.TakeDamage(meleeDamage);
-
+            Debug.Log("hit is" + other.gameObject.name);
             canAttack = false;
             Invoke("ResetAttack", attackInterval);
         }
