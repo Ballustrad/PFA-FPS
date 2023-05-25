@@ -13,20 +13,22 @@ public class Target : MonoBehaviour
     public float currentHealth;
     public float damageMultiplier = 1f;
     public GameObject deathExplosion;
+    public float valuePoints;
    
     public UIHealthBar healthBar;
     public GameManager gameManager;
-
+    public ScoreManager scoreManager;
 
     private void Awake()
     {
         gameManager = GameManager.Instance;
+        scoreManager = ScoreManager.Instance;
         currentHealth = maxHealth;
         enemyRigidbody = GetComponent<Rigidbody>();
     }
     public void TakeDamage(float amountDamage)
     {
-        currentHealth -= amountDamage * damageMultiplier;
+        currentHealth -= amountDamage + damageMultiplier;
         healthBar.SetHealthBarPercentage(currentHealth / maxHealth);
 
         // Affiche les dégâts à côté de l'impact
@@ -80,6 +82,7 @@ public class Target : MonoBehaviour
     {
         Instantiate(deathExplosion, transform.position, Quaternion.identity);
         gameManager.EnemyDeathSound();
+        scoreManager.AddPoints(valuePoints);
         Destroy(gameObject);
     }
 
@@ -89,7 +92,7 @@ public class Target : MonoBehaviour
         if (!isMarked)
         {
             // Augmenter le multiplicateur de dégâts de l'ennemi
-            damageMultiplier = damageMultiplier * (1f + damageIncreasePercentage / 100f);
+            damageMultiplier = damageIncreasePercentage;
 
 
             isMarked = true;
@@ -116,16 +119,16 @@ public class Target : MonoBehaviour
     public void ShowDamageText(float damage)
     {
         // Instancie le préfab d'affichage des dégâts à l'endroit de l'impact
-        GameObject damageTextObject = Instantiate(damageTextPrefab, transform.position, Quaternion.identity);
+       // GameObject damageTextObject = Instantiate(damageTextPrefab, transform.position, Quaternion.identity);
 
         // Obtient le composant de texte (ou autre élément visuel) du préfab
-        TextMeshPro damageText = damageTextObject.GetComponent<TextMeshPro>();
+       // TextMeshPro damageText = damageTextObject.GetComponent<TextMeshPro>();
 
         // Définit le texte des dégâts à afficher
-        damageText.text = damage.ToString();
+       // damageText.text = damage.ToString();
 
         // Détruit le préfab d'affichage des dégâts après un certain délai (par exemple, 1 seconde)
-        Destroy(damageTextObject, 1f);
+        //Destroy(damageTextObject, 1f);
     }
 
 
@@ -157,5 +160,9 @@ public class Target : MonoBehaviour
     {
         isMovementDisabled = false;
         enemyRigidbody.isKinematic = false; // Activer à nouveau les effets de physique sur l'ennemi
+    }
+    public bool IsParalyzed
+    {
+        get { return isParalyzed; }
     }
 }

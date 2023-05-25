@@ -38,7 +38,7 @@ public class SkillsNormal : MonoBehaviour
     }
 
     // La fonction pour gérer l'explosion de la grenade
-    IEnumerator ExplodeGrenade(GameObject grenade)
+    public IEnumerator ExplodeGrenade(GameObject grenade)
     {
         // Attendre le délai d'explosion
         yield return new WaitForSeconds(explosionDelay);

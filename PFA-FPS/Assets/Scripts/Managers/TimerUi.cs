@@ -10,8 +10,15 @@ public class TimerUi : MonoBehaviour
     private float levelDuration = 180f; // Durée du niveau en secondes (3 minutes)
     private float levelTimer = 0f; // Compteur de temps pour le niveau
     public bool levelIsStarted;
-    
-   
+    public GameManager gameManager;
+    public ScoreManager scoreManager;
+
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+        scoreManager = ScoreManager.Instance;
+        scoreManager.UpdateScoreTextRound();
+    }
     private void Update()
     {
         levelTimer += Time.deltaTime;
@@ -34,11 +41,11 @@ public class TimerUi : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    private void EndLevel()
+    public void EndLevel()
     {
         levelIsStarted = false;
         levelTimer = 0f;
-
+        
         // Arrêter le spawn des ennemis
         CancelInvoke("SpawnEnemy");
 
@@ -48,7 +55,7 @@ public class TimerUi : MonoBehaviour
         {
             Destroy(enemy);
         }
-
+        
         // Afficher un écran de fin de niveau ou effectuer d'autres actions spécifiques à la fin du niveau
         // ...
 
@@ -59,6 +66,7 @@ public class TimerUi : MonoBehaviour
     private IEnumerator LoadLobbyScene()
     {
         yield return new WaitForSeconds(5f);
+        scoreManager.LobbyLoad();
         SceneManager.LoadScene("Lobby");
     }
 
@@ -66,6 +74,7 @@ public class TimerUi : MonoBehaviour
     {
         levelIsStarted = true;
         levelTimer = 0f;
+        scoreManager.pointsRound = 0;
     }
 }
 

@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public GameObject fast;
     public GameObject heavy;
     public Vector3 spawnPoint = new Vector3(0, 0, 0);
+    
+
 
     public Transform parent;
     public Transform currentPlayer;
@@ -27,6 +29,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI ammo;
     public AudioClip deathSound; // Son à jouer à la mort de l'ennemi
     public AudioSource audioSource;
+    public MiddleManScenehandler middleManScenehandler;
+
+    
     
     public TimerUi timerUi;
 
@@ -39,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        
+     
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
@@ -48,11 +53,16 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+        
 
+        
         if (timerUi != null)
         {
+
             timerUi.StartLevel();
+            
         }
+        
 
         string selectedPlayer = PlayerPrefs.GetString("SelectedPlayer", "fast");
         GameObject newplayer = Instantiate(GetPlayerPrefab(selectedPlayer), spawnPoint, Quaternion.identity, parent);
@@ -60,7 +70,7 @@ public class GameManager : MonoBehaviour
         currentPlayer = newplayer.transform;
         //uiIconSkills.SetActive(true);
     }
-
+   
     private GameObject GetPlayerPrefab(string playerName)
     {
         switch (playerName)

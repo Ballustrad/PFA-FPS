@@ -27,19 +27,26 @@ public class AILocomotion : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
-
-        if (playerTransform != null && timer < 0.0f)
+        if ( playerTransform != null && timer < 0.0f)
         {
-            if (playerTransform != null && playerTransform.gameObject.activeSelf)
+            if (playerTransform != null && timer < 0.0f)
             {
-                float sqDistance = (playerTransform.position - agent.destination).sqrMagnitude;
-                if (sqDistance > maxDistance * maxDistance)
+                if (!GetComponent<Target>().IsParalyzed)
                 {
-                    agent.destination = playerTransform.position;
+                    if (playerTransform != null && playerTransform.gameObject.activeSelf)
+                    {
+                        float sqDistance = (playerTransform.position - agent.destination).sqrMagnitude;
+                        if (sqDistance > maxDistance * maxDistance)
+                        {
+                            agent.destination = playerTransform.position;
+                        }
+                    }
                 }
-            }
+                    
 
-            timer = maxTime;
+                timer = maxTime;
+            }
         }
+           
     }
 }
