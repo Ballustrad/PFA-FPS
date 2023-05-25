@@ -7274,3 +7274,5 @@ MonoBehaviour:
   currentPoints: 0
   gameManager: {fileID: 0}
   textScore: {fileID: 464236518}
+  middleManScenehandler: {fileID: 11400000, guid: 6810b7892222f3d429061b22fdc80688,
+    type: 2}
