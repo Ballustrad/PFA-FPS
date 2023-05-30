@@ -1651,6 +1651,7 @@ Transform:
   m_Children:
   - {fileID: 1201659293}
   - {fileID: 1385665442}
+  - {fileID: 2064528292}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4578,7 +4579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1081578445
 Transform:
   m_ObjectHideFlags: 0
@@ -4607,8 +4608,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportInterval: 10
-  teleportRangeMin: {x: 0, y: 0, z: 0}
-  teleportRangeMax: {x: 0, y: 0, z: 0}
+  teleportRangeMin: {x: -20, y: 1, z: -20}
+  teleportRangeMax: {x: 20, y: 1, z: 20}
   gameManager: {fileID: 0}
 --- !u!43 &1107209808
 Mesh:
@@ -4833,6 +4834,7 @@ MonoBehaviour:
   audioSource: {fileID: 1201659295}
   middleManScenehandler: {fileID: 11400000, guid: 6810b7892222f3d429061b22fdc80688,
     type: 2}
+  healthDecay: 0
   timerUi: {fileID: 748961783}
   enemyPrefabs:
   - {fileID: 6170811578261601240, guid: bb987a075ad234d4b87ef46269876dc9, type: 3}
@@ -4846,6 +4848,7 @@ MonoBehaviour:
   - {fileID: 1300432856}
   spawnInterval: 5
   initialDelay: 2
+  interval: 1
 --- !u!82 &1201659295
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9768,6 +9771,58 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &2064528291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2064528292}
+  - component: {fileID: 2064528293}
+  m_Layer: 0
+  m_Name: LevelModifier
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2064528292
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064528291}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 290687056}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2064528293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064528291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9382d684516e04241be0d95c4df54f8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  middleManScenehandler: {fileID: 11400000, guid: 6810b7892222f3d429061b22fdc80688,
+    type: 2}
+  melee: {fileID: 6170811578261601240, guid: 5c9d7278bd3357e46947aa1a5e9f6abb, type: 3}
+  kamikaze: {fileID: 6170811578261601240, guid: c04d5800ac3ca8440baaff5a172a4c27,
+    type: 3}
+  ranged: {fileID: 6170811578261601240, guid: bb987a075ad234d4b87ef46269876dc9, type: 3}
+  tpHandler: {fileID: 1081578444}
+  manager: {fileID: 0}
 --- !u!43 &2124485859
 Mesh:
   m_ObjectHideFlags: 0

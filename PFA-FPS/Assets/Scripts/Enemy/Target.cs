@@ -80,6 +80,10 @@ public class Target : MonoBehaviour
     }
     public void Die()
     {
+        if (gameManager.healthDecay == true)
+        {
+            gameManager.player.GetComponent<PlayerMovement>().Healing(20);
+        }
         Instantiate(deathExplosion, transform.position, Quaternion.identity);
         gameManager.EnemyDeathSound();
         scoreManager.AddPoints(valuePoints);

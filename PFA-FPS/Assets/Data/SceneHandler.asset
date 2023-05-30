@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32676aee801927f45948606809a39b2c, type: 3}
   m_Name: SceneHandler
   m_EditorClassIdentifier: 
-  levelIsStarted: 0
+  indexLevel: 5
+  levelIsStarted: 1
+  pointOfRound: 0
+  currentPoint: 0

@@ -7,7 +7,7 @@ using System;
 public class TimerUi : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
-    private float levelDuration = 180f; // Durée du niveau en secondes (3 minutes)
+    private float levelDuration = 30f; // Durée du niveau en secondes (3 minutes)
     private float levelTimer = 0f; // Compteur de temps pour le niveau
     public bool levelIsStarted;
     public GameManager gameManager;
@@ -46,7 +46,7 @@ public class TimerUi : MonoBehaviour
     {
         levelIsStarted = false;
         levelTimer = 0f;
-        
+        middleManScenehandler.indexLevel += 1;
         // Arrêter le spawn des ennemis
         CancelInvoke("SpawnEnemy");
 

@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject fast;
     public GameObject heavy;
     public Vector3 spawnPoint = new Vector3(0, 0, 0);
-    
+
 
 
     public Transform parent;
@@ -30,9 +30,9 @@ public class GameManager : MonoBehaviour
     public AudioClip deathSound; // Son à jouer à la mort de l'ennemi
     public AudioSource audioSource;
     public MiddleManScenehandler middleManScenehandler;
+    public bool healthDecay = false;
 
-    
-    
+
     public TimerUi timerUi;
 
     private static GameManager instance;
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-     
+
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
@@ -53,16 +53,16 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
-        
 
-        
+
+
         if (timerUi != null)
         {
 
             timerUi.StartLevel();
-            
+
         }
-        
+
 
         string selectedPlayer = PlayerPrefs.GetString("SelectedPlayer", "fast");
         GameObject newplayer = Instantiate(GetPlayerPrefab(selectedPlayer), spawnPoint, Quaternion.identity, parent);
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         currentPlayer = newplayer.transform;
         //uiIconSkills.SetActive(true);
     }
-   
+
     private GameObject GetPlayerPrefab(string playerName)
     {
         switch (playerName)
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
                 return fast;
         }
     }
-    
+
     public void EnemyDeathSound()
     {
         if (deathSound != null && audioSource != null)
@@ -94,8 +94,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
-    
+
+
 
     public GameObject[] enemyPrefabs; // Tableau des prefabs des ennemis disponibles
     public Transform[] spawnPoints; // Tableau des emplacements de spawn
@@ -108,6 +108,7 @@ public class GameManager : MonoBehaviour
         {
             InvokeRepeating("SpawnEnemy", initialDelay, spawnInterval);
         }
+        
     }
 
     private void SpawnEnemy()
@@ -127,4 +128,33 @@ public class GameManager : MonoBehaviour
         // Instancie l'ennemi au point de spawn sélectionné
         Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
     }
+
+    public float interval = 1f; // Intervalle de temps en secondes
+    private float timer = 0f; // Compteur de temps
+
+    private void Update()
+    {
+        if (healthDecay == true)
+        {
+            timer += Time.deltaTime;
+
+            if (timer >= interval)
+            {
+                // Déclencher l'action
+                PerformAction();
+                timer = 0f;
+            }
+        }
+        
+    }
+
+    private void PerformAction()
+    {
+        // Code pour l'action à effectuer chaque seconde
+        player.GetComponent<PlayerMovement>().TakeDamage(5);
+        // Ajoutez ici le code de l'action que vous souhaitez exécuter chaque seconde
+    }
+
+
+
 }

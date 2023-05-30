@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c08c74944457641af6b55afa71f517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 100
   currentHealth: 0
   damageMultiplier: 1
   deathExplosion: {fileID: 1421917349152839519, guid: afe70fc13c6710e49bfb563d816be9cc,
@@ -345,6 +345,7 @@ MonoBehaviour:
   valuePoints: 50
   healthBar: {fileID: 4111781496764558777}
   gameManager: {fileID: 0}
+  scoreManager: {fileID: 0}
   damageTextPrefab: {fileID: 3583796486341815643, guid: a73b6fdb49a44754f8e5a9b7619c231c,
     type: 3}
 --- !u!195 &3262494089806992652
