@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Timeline;
+using UnityEngine.AI;
 
 public class Target : MonoBehaviour
 {
@@ -55,7 +56,7 @@ public class Target : MonoBehaviour
             isParalyzed = true;
 
             // Arrête le mouvement de la cible
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            GetComponent<NavMeshAgent>().speed = 0;
 
 
 
@@ -73,7 +74,7 @@ public class Target : MonoBehaviour
 
 
         // Rétablit le mouvement de la cible
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<NavMeshAgent>().speed = 7;
 
         // Réinitialise la variable isParalyzed
         isParalyzed = false;
@@ -136,35 +137,7 @@ public class Target : MonoBehaviour
     }
 
 
-    public void DisableMovementAndAttack(float duration)
-    {
-        isMovementDisabled = true;
-        isAttackDisabled = true;
-        DisableMovement();
-
-        StartCoroutine(EnableMovementAndAttackAfterDelay(duration));
-    }
-
-    private IEnumerator EnableMovementAndAttackAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        EnableMovement();
-        isMovementDisabled = false;
-        isAttackDisabled = false;
-    }
-
-    public void DisableMovement()
-    {
-        isMovementDisabled = true;
-        enemyRigidbody.velocity = Vector3.zero; // Arrêter le mouvement en réinitialisant la vitesse
-        enemyRigidbody.isKinematic = true; // Désactiver les effets de physique sur l'ennemi
-    }
-
-    public void EnableMovement()
-    {
-        isMovementDisabled = false;
-        enemyRigidbody.isKinematic = false; // Activer à nouveau les effets de physique sur l'ennemi
-    }
+    
     public bool IsParalyzed
     {
         get { return isParalyzed; }

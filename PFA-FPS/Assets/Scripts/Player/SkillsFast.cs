@@ -81,7 +81,7 @@ public class SkillsFast : MonoBehaviour
             Target enemy = collider.GetComponent<Target>();
             if (enemy != null)
             {
-                enemy.DisableMovementAndAttack(disableDuration);
+                enemy.Paralyze(disableDuration);
             }
         }
 
