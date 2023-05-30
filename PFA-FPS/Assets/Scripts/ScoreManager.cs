@@ -6,8 +6,7 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public float pointsRound;
-    public float currentPoints;
+   
 
     
     public GameManager gameManager;
@@ -35,37 +34,35 @@ public class ScoreManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         gameManager = GameManager.Instance;
-        middleManScenehandler.currentPoint = middleManScenehandler.currentPoint + middleManScenehandler.pointOfRound;
-        currentPoints = middleManScenehandler.currentPoint;
-        UpdateScoreTextTotal();
+        
+        if (gameManager.timerUi == null) 
+        {
+            UpdateScoreTextTotal();
+        }
+        
     }
 
     public void UpdateScoreTextRound()
     {
         if (textScore != null) 
         {
-            textScore.text = pointsRound.ToString();
+            textScore.text = middleManScenehandler.pointOfRound.ToString();
         }
     }
     public void UpdateScoreTextTotal()
     {
         if(textScore != null)
         {
-            textScore.text = currentPoints.ToString();  
+            textScore.text = middleManScenehandler.currentPoint.ToString();  
         }
     }
     public void AddPoints(float amount)
     {
-        pointsRound += amount;
+        middleManScenehandler.pointOfRound += amount;
         UpdateScoreTextRound();
     }
 
-    public void LobbyLoad()
-    {
-        middleManScenehandler.pointOfRound = pointsRound;
-        
-        
-    }
+   
 
 
 }

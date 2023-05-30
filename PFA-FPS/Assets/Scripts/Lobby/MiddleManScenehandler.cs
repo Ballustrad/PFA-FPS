@@ -8,9 +8,10 @@ public class MiddleManScenehandler : ScriptableObject
 {
     [SerializeField]
     public static GameObject MiddleManSceneInstance;
+    public float indexLevel = 0;
     public  bool levelIsStarted;
-    public float pointOfRound;
-    public float currentPoint;
+    public  float pointOfRound;
+    public   float currentPoint;
    
     
 }

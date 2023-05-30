@@ -12,6 +12,7 @@ public class TimerUi : MonoBehaviour
     public bool levelIsStarted;
     public GameManager gameManager;
     public ScoreManager scoreManager;
+    public MiddleManScenehandler middleManScenehandler;
 
     private void Awake()
     {
@@ -55,10 +56,10 @@ public class TimerUi : MonoBehaviour
         {
             Destroy(enemy);
         }
-        
+
         // Afficher un écran de fin de niveau ou effectuer d'autres actions spécifiques à la fin du niveau
         // ...
-
+        middleManScenehandler.currentPoint += middleManScenehandler.pointOfRound;
         // Charger la scène du lobby après un délai de 5 secondes
         StartCoroutine(LoadLobbyScene());
     }
@@ -66,7 +67,7 @@ public class TimerUi : MonoBehaviour
     private IEnumerator LoadLobbyScene()
     {
         yield return new WaitForSeconds(5f);
-        scoreManager.LobbyLoad();
+        
         SceneManager.LoadScene("Lobby");
     }
 
@@ -74,7 +75,8 @@ public class TimerUi : MonoBehaviour
     {
         levelIsStarted = true;
         levelTimer = 0f;
-        scoreManager.pointsRound = 0;
+        middleManScenehandler.pointOfRound = 0f;
+        scoreManager.UpdateScoreTextRound();
     }
 }
 

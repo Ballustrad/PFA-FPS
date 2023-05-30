@@ -49,13 +49,18 @@ public class RangedEnemy : MonoBehaviour
             agent.SetDestination(playerTransform.position); // Définit la destination du NavMeshAgent vers le joueur
         }
     }
-
+    public AudioSource shootSource;
+    public AudioClip shootClip;
     private void Shoot()
     {
         // Instantiate the projectile and set its direction towards the player
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         Vector3 direction = (playerTransform.position - transform.position).normalized;
         projectile.GetComponent<EnemyProjectile>().SetDirection(direction);
+        if (shootClip != null && shootSource != null)
+        {
+            shootSource.PlayOneShot(shootClip);
+        }
     }
 
     private void ResetShootingCooldown()

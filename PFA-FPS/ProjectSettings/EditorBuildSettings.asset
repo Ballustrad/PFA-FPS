@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gameplay Loop/Lobby.unity
     guid: 1323b77e7abd9b64e84758a2b9bf501f
+  - enabled: 1
+    path: Assets/Scenes/Gameplay Loop/LevelNoLight.unity
+    guid: 294796c903c305643b5e1894b665e91e
   m_configObjects: {}

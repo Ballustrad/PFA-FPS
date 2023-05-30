@@ -1508,7 +1508,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ffdca75da04b92e43aa3c45e9d7b4361, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3c8a857d208d7ed4db15a82ca6e45d76, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.268
   m_Pitch: 1
@@ -1620,7 +1620,7 @@ MonoBehaviour:
   impactEffect: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7,
     type: 3}
   audioSource: {fileID: 755850396276412338}
-  shootSound: {fileID: 8300000, guid: ffdca75da04b92e43aa3c45e9d7b4361, type: 3}
+  shootSound: {fileID: 8300000, guid: 3c8a857d208d7ed4db15a82ca6e45d76, type: 3}
   weaponRecoil: {fileID: 0}
   BulletSpawn: {fileID: 366230906611307276}
   BulletPrefab: {fileID: 6122646271653104550, guid: df52ece537801ea4d973407d9e572348,

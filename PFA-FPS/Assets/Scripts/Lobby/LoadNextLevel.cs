@@ -7,7 +7,7 @@ public class LoadNextLevel : MonoBehaviour
 {
     private GameManager gameManager; // Référence vers le GameManager
     public MiddleManScenehandler middleManScenehandler;
-
+    public string levelName;
     private void Start()
     {
         gameManager = GameManager.Instance;
@@ -18,7 +18,7 @@ public class LoadNextLevel : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
 
-            SceneManager.LoadScene("MainLevel");
+            SceneManager.LoadScene(levelName);
             middleManScenehandler.levelIsStarted = true;
 
             
