@@ -40,12 +40,20 @@ public class PlayerMovement : MonoBehaviour
         hpBar.SetState(currentHealth, maxHealth);
     }
     
+    public GameObject healEffect;
+
 
     public void Healing(float amount)
     {
-        currentHealth = currentHealth +amount;
-        if (currentHealth > maxHealth) 
-        { 
+        currentHealth += amount;
+        if (healEffect != null)
+        {
+            GameObject effect = Instantiate(healEffect, transform.position, Quaternion.identity, transform);
+            Destroy(effect, 2f); // Détruit l'effet de guérison après une seconde
+        }
+
+        if (currentHealth > maxHealth)
+        {
             currentHealth = maxHealth;
         }
         hpBar.SetState(currentHealth, maxHealth);

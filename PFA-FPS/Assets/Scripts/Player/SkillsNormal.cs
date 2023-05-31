@@ -28,39 +28,17 @@ public class SkillsNormal : MonoBehaviour
 
     public void ThrowGrenade()
     {
-        // Créer une instance de l'objet de grenade et la positionner à la position du joueur
+      
         GameObject grenade = Instantiate(grenadePara, spawnPointGrenade.transform.position, transform.rotation);
-        // Ajouter une force à la grenade pour la lancer
+        
+
         grenade.GetComponent<Rigidbody>().AddForce(transform.forward * 1000f);
 
-        // Programmer l'explosion de la grenade après un délai
-        StartCoroutine(ExplodeGrenade(grenade));
     }
+  
 
     // La fonction pour gérer l'explosion de la grenade
-    public IEnumerator ExplodeGrenade(GameObject grenade)
-    {
-        // Attendre le délai d'explosion
-        yield return new WaitForSeconds(explosionDelay);
-        // Créer une sphère d'impact autour de la grenade
-        Collider[] colliders = Physics.OverlapSphere(grenade.transform.position, explosionRadius, enemyLayer);
-
-        // Paralyser les ennemis touchés par la grenade
-        foreach (Collider hit in colliders)
-        {
-            if (hit.gameObject.layer == layerToHit)
-            {
-                hit.GetComponent<Target>().Paralyze(paralysisDuration);
-            }
-        }
-
-        // Jouer la particule et le son d'explosion
-        //Instantiate(explosionParticle, grenade.transform.position, grenade.transform.rotation);
-       //AudioSource.PlayClipAtPoint(explosionSound, grenade.transform.position);
-
-        // Détruire la grenade
-        Destroy(grenade);
-    }
+   
 
 
     public float duration = 5f;

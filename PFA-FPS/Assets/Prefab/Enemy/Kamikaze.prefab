@@ -346,6 +346,8 @@ MonoBehaviour:
   healthBar: {fileID: 4111781496764558777}
   gameManager: {fileID: 0}
   scoreManager: {fileID: 0}
+  effectParalyze: {fileID: 7054578972039783742, guid: 57bd1adf2fca58e4bba48830a177f1aa,
+    type: 3}
   damageTextPrefab: {fileID: 3583796486341815643, guid: a73b6fdb49a44754f8e5a9b7619c231c,
     type: 3}
 --- !u!54 &6170811578261601246

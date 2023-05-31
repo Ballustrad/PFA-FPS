@@ -131,7 +131,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449488687614744342}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.19, y: -0.116000175, z: 0.644}
+  m_LocalPosition: {x: 0.19, y: -0.116000175, z: 4.374}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -761,6 +761,7 @@ MonoBehaviour:
   hpBar: {fileID: 1774335691545339986}
   velocity: {x: 0, y: 0, z: 0}
   isGrounded: 0
+  healEffect: {fileID: 0}
 --- !u!208 &227298815499674095
 NavMeshObstacle:
   m_ObjectHideFlags: 0

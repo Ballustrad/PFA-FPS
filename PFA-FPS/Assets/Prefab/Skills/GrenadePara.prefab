@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7869448456036739656}
   - component: {fileID: 7869448456036739657}
   - component: {fileID: 7225220508775188404}
-  - component: {fileID: 540770944880675494}
+  - component: {fileID: -7047533654689488789}
   m_Layer: 0
   m_Name: GrenadePara
   m_TagString: Untagged
@@ -115,7 +115,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &540770944880675494
+--- !u!114 &-7047533654689488789
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,3 +127,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af7993dd5f048f4c86ab2c614e07b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paralysisDuration: 5
+  explosionRadius: 10
+  explosionDelay: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  layerToHit:
+    serializedVersion: 2
+    m_Bits: 256

@@ -20,6 +20,9 @@ public class Target : MonoBehaviour
     public GameManager gameManager;
     public ScoreManager scoreManager;
 
+    public GameObject effectParalyze;
+    
+
     private void Awake()
     {
         gameManager = GameManager.Instance;
@@ -54,23 +57,23 @@ public class Target : MonoBehaviour
         {
             // Définit la variable isParalyzed à true
             isParalyzed = true;
-
+            GameObject effect = Instantiate(effectParalyze, transform.position, Quaternion.identity, transform);
             // Arrête le mouvement de la cible
             GetComponent<NavMeshAgent>().speed = 0;
 
 
 
             // Lance une coroutine pour annuler la paralysie après une durée spécifiée
-            StartCoroutine(CancelParalysis(duration));
+            StartCoroutine(CancelParalysis(duration, effect));
         }
     }
 
     // La coroutine pour annuler la paralysie
-    IEnumerator CancelParalysis(float duration)
+    IEnumerator CancelParalysis(float duration, GameObject effect)
     {
         // Attend la durée spécifiée
         yield return new WaitForSeconds(duration);
-
+        Destroy(effect);
 
 
         // Rétablit le mouvement de la cible

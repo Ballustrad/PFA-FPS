@@ -4,20 +4,35 @@ using UnityEngine;
 
 public class GrenadeProjectile : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    public float paralysisDuration = 5f;
+    public float explosionRadius = 10f;
+    public float explosionDelay = 1f;
+    public LayerMask enemyLayer;
+    public LayerMask layerToHit;
+
+    private void OnTriggerEnter(Collider other)
     {
-        // Vérifie si la collision se produit avec un ennemi
-        if (collision.gameObject.CompareTag("Enemy"))
+        Debug.Log("trigger");
+        if (other.gameObject.CompareTag("Enemy"))
         {
             // Appelle la fonction ExplodeGrenade du script SkillsNormal
-            SkillsNormal skillsNormal = GetComponentInParent<SkillsNormal>();
-            if (skillsNormal != null)
+
+            Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius, enemyLayer);
+            Debug.Log("colliders:"+ other.gameObject.name);
+
+            // Paralyser les ennemis touchés par la grenade
+            foreach (Collider hit in colliders)
             {
-                skillsNormal.ExplodeGrenade(gameObject);
+                if (hit.gameObject.layer == layerToHit)
+                {
+                    hit.GetComponent<Target>().Paralyze(paralysisDuration);
+                }
             }
+            
         }
 
         // Détruit la balle après la collision
         Destroy(gameObject);
     }
+    
 }
