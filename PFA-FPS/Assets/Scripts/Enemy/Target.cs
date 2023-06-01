@@ -21,7 +21,11 @@ public class Target : MonoBehaviour
     public ScoreManager scoreManager;
 
     public GameObject effectParalyze;
-    
+
+    private void Update()
+    {
+        Debug.Log("paralyzed:" + isParalyzed);
+    }
 
     private void Awake()
     {
@@ -50,7 +54,7 @@ public class Target : MonoBehaviour
     bool isParalyzed = false;
 
     // La fonction pour paralyser la cible pendant une durée spécifiée
-    public void Paralyze(float duration)
+    public  void Paralyze(float duration)
     {
         // Vérifie si la cible n'est pas déjà paralysée
         if (!isParalyzed)
@@ -73,6 +77,7 @@ public class Target : MonoBehaviour
     {
         // Attend la durée spécifiée
         yield return new WaitForSeconds(duration);
+
         Destroy(effect);
 
 

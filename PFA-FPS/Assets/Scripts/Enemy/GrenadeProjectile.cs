@@ -12,19 +12,22 @@ public class GrenadeProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("trigger");
+        
         if (other.gameObject.CompareTag("Enemy"))
         {
             // Appelle la fonction ExplodeGrenade du script SkillsNormal
 
             Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius, enemyLayer);
-            Debug.Log("colliders:"+ other.gameObject.name);
-
+            
+            
             // Paralyser les ennemis touchés par la grenade
             foreach (Collider hit in colliders)
             {
-                if (hit.gameObject.layer == layerToHit)
+                
+
+                if (hit.gameObject.CompareTag("Enemy"))
                 {
+                    
                     hit.GetComponent<Target>().Paralyze(paralysisDuration);
                 }
             }
