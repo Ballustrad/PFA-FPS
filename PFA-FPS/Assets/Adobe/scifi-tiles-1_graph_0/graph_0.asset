@@ -146,14 +146,14 @@ MonoBehaviour:
   CurrentStatePreset: " <sbspreset pkgurl=\"pkg://tilesFloor1\" label=\"\" >\n  <presetinput
     identifier=\"$outputsize\" uid=\"3748410755\" type=\"8\" value=\"12,12\" />\n 
     <presetinput identifier=\"tiles_colour\" uid=\"2954012191\" type=\"3\" value=\"0.175507,0.181451,0.188679,1\"
-    />\n </sbspreset>\n"
+    />\n  <presetinput identifier=\"frame_colour\" uid=\"2954010842\" type=\"3\"
+    value=\"0,0,0,1\" />\n </sbspreset>\n"
   IsRuntimeOnly: 0
   GenerateAllOutputs: 0
   GenerateAllMipmaps: 1
   OutputMaterial: {fileID: 2100000, guid: 494cb8f04518609418ab8c85a385b3dd, type: 2}
   DefaultPreset: " <sbspreset pkgurl=\"pkg://tilesFloor1\" label=\"\" >\n  <presetinput
-    identifier=\"$outputsize\" uid=\"3748410755\" type=\"8\" value=\"10,10\" />\n
-    </sbspreset>\n"
+    identifier=\"$outputsize\" uid=\"3748410755\" type=\"8\" value=\"10,10\" />\n</sbspreset>\n"
   MaterialShader: Universal Render Pipeline/Lit
   RenderTextures: 0
   OutputRemaped: 0
@@ -256,7 +256,7 @@ MonoBehaviour:
             output image
           Type: 3
           WidgetType: 3
-        Data: {x: 0.2208, y: 0.222437, z: 0.23, w: 1}
+        Data: {x: 0, y: 0, z: 0, w: 1}
         NumericalDescription:
           DefaultValue: {x: 0.2208, y: 0.222437, z: 0.23, w: 1}
           MinValue: {x: 0, y: 0, z: 0, w: 0}
