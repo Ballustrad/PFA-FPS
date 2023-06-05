@@ -915,6 +915,8 @@ MonoBehaviour:
   duration: 5
   reductionAmount: 0.2
   cooldown: 15
+  dmgReductionEffect: {fileID: 1881552412633134, guid: 43777944c706d5047bec3db99b05403d,
+    type: 3}
   skill1: {fileID: 1199453528022965347}
   skill2: {fileID: 6561434927443029600}
   skill3: {fileID: 4970177717123334501}
@@ -948,9 +950,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   hpBar: {fileID: 1774335691545339986}
+  middleManScenehandler: {fileID: 11400000, guid: 6810b7892222f3d429061b22fdc80688,
+    type: 2}
+  mainCamera: {fileID: 4036898882891250086}
   velocity: {x: 0, y: 0, z: 0}
   isGrounded: 0
-  healEffect: {fileID: 0}
 --- !u!208 &227298815499674095
 NavMeshObstacle:
   m_ObjectHideFlags: 0

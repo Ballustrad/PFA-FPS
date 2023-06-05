@@ -36,6 +36,7 @@ public class LevelModifier : MonoBehaviour
         if (middleManScenehandler.indexLevel == 4)
         {
             SceneManager.LoadScene("LevelNoLight");
+            middleManScenehandler.level4IsHere = true;
         }
         if (middleManScenehandler.indexLevel == 5)
         {
@@ -68,7 +69,7 @@ public class LevelModifier : MonoBehaviour
         }
         if (middleManScenehandler.indexLevel == 4)
         {
-            
+            middleManScenehandler.level4IsHere = false;
         }
         if (middleManScenehandler.indexLevel == 5)
         {

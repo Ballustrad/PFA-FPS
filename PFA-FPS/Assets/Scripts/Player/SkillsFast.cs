@@ -8,15 +8,20 @@ public class SkillsFast : MonoBehaviour
     public PlayerMovement playerMovement;
 
     public float healingPercentage = 50f;
+    [Space]
     public GameObject skill1;
     public GameObject skill2;
     public GameObject skill3;
     private Color originalS1;
     private Color originalS2;
     private Color originalS3;
+    [Space] 
+
     private bool isOnCooldownHeal = false;
     private float cooldownHeal = 10f;
     public GameManager gameManager;
+
+    
 
 
     private void Awake()
@@ -28,6 +33,7 @@ public class SkillsFast : MonoBehaviour
         originalS3 = skill3.GetComponent<Image>().color;
 
     }
+    
     private void Update()
     {
         if (Input.GetMouseButtonDown(1) && gameManager.canUseSkill1 == true && !isOnCooldownHeal)
@@ -67,6 +73,11 @@ public class SkillsFast : MonoBehaviour
     {
 
         playerMovement.Healing(healingPercentage);
+        if (healEffect != null)
+        {
+            GameObject effect = Instantiate(healEffect, transform.position, Quaternion.identity, transform);
+            Destroy(effect, 2f); // Détruit l'effet de guérison après une seconde
+        }
 
         // Démarrer le temps de recharge
         StartCooldownHeal();
@@ -91,8 +102,8 @@ public class SkillsFast : MonoBehaviour
     public LayerMask enemyLayer;
 
     private bool isOnCooldownFreeze = false;
+    public GameObject healEffect;
 
-    
 
     private void UseDisableEnemiesAbility()
     {

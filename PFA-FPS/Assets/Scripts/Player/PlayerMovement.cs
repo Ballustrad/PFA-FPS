@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 //using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
@@ -22,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     public HealthBar hpBar;
+    public MiddleManScenehandler middleManScenehandler;
+    public GameObject mainCamera;
 
     [SerializeField] private Vector3 velocity;
     [SerializeField] public bool isGrounded;
@@ -35,19 +38,62 @@ public class PlayerMovement : MonoBehaviour
         currentHealth = maxHealth;
        
         hpBar.SetState(currentHealth, maxHealth);
+        if (middleManScenehandler.level4IsHere == true )
+        {
+            ChangeToSolidColorBackground(Color.black);
+        }
+        else
+        {
+            RestorePreviousBackground();
+        }
     }
-    
-    public GameObject healEffect;
+
+    public void ChangeToSolidColorBackground(Color color)
+    {
+        // Créez un nouveau matériau avec une couleur solide
+        Material solidColorMaterial = new Material(Shader.Find("Unlit/Color"));
+        solidColorMaterial.color = color;
+
+        // Définir le mode de rendu de la caméra sur "Custom" pour utiliser le nouveau matériau
+        mainCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.Color;
+        mainCamera.GetComponent<Camera>().backgroundColor = Color.black;
+        mainCamera.GetComponent<Camera>().allowHDR = false;
+        mainCamera.GetComponent<Camera>().allowMSAA = false;
+        mainCamera.GetComponent<Camera>().allowDynamicResolution = false;
+        mainCamera.GetComponent<Camera>().opaqueSortMode = OpaqueSortMode.Default;
+        mainCamera.GetComponent<Camera>().depthTextureMode = DepthTextureMode.None;
+        mainCamera.GetComponent<Camera>().targetTexture = null;
+        mainCamera.GetComponent<Camera>().SetReplacementShader(Shader.Find("Unlit/Color"), "");
+
+        // Affecter le nouveau matériau à la caméra
+        mainCamera.GetComponent<Camera>().SetReplacementShader(solidColorMaterial.shader, solidColorMaterial.shader.name);
+        mainCamera.GetComponent<Camera>().SetReplacementShader(solidColorMaterial.shader, solidColorMaterial.shader.name);
+        mainCamera.GetComponent<Camera>().SetReplacementShader(solidColorMaterial.shader, solidColorMaterial.shader.name);
+        mainCamera.GetComponent<Camera>().SetReplacementShader(solidColorMaterial.shader, solidColorMaterial.shader.name);
+        mainCamera.GetComponent<Camera>().SetReplacementShader(solidColorMaterial.shader, solidColorMaterial.shader.name);
+        mainCamera.GetComponent<Camera>().SetReplacementShader(solidColorMaterial.shader, solidColorMaterial.shader.name);
+        mainCamera.GetComponent<Camera>().SetReplacementShader(solidColorMaterial.shader, solidColorMaterial.shader.name);
+        mainCamera.GetComponent<Camera>().SetReplacementShader(solidColorMaterial.shader, solidColorMaterial.shader.name);
+    }
+    public void RestorePreviousBackground()
+    {
+        // Réinitialiser les paramètres de la caméra pour restaurer le fond précédent
+        mainCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.Skybox;
+        mainCamera.GetComponent<Camera>().ResetReplacementShader();
+        mainCamera.GetComponent<Camera>().ResetAspect();
+        mainCamera.GetComponent<Camera>().ResetCullingMatrix();
+        mainCamera.GetComponent<Camera>().ResetProjectionMatrix();
+        mainCamera.GetComponent<Camera>().ResetReplacementShader();
+        mainCamera.GetComponent<Camera>().ResetReplacementShader();
+        mainCamera.GetComponent<Camera>().ResetReplacementShader();
+        mainCamera.GetComponent<Camera>().ResetReplacementShader();
+    }
 
 
     public void Healing(float amount)
     {
         currentHealth += amount;
-        if (healEffect != null)
-        {
-            GameObject effect = Instantiate(healEffect, transform.position, Quaternion.identity, transform);
-            Destroy(effect, 2f); // Détruit l'effet de guérison après une seconde
-        }
+        
 
         if (currentHealth > maxHealth)
         {

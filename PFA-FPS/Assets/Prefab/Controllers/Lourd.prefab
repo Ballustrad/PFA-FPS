@@ -76,6 +76,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1124834705922148480
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8934242950344128211}
+  m_Layer: 7
+  m_Name: MissileHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8934242950344128211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124834705922148480}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.19, y: -0.116000175, z: 1.094}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4036898881885781490}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1915725831900065754
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,8 +220,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 330.2, y: 63.1}
-  m_SizeDelta: {x: 375, y: 50}
+  m_AnchoredPosition: {x: 254, y: 97}
+  m_SizeDelta: {x: 500, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &555995767372020072
 MonoBehaviour:
@@ -264,15 +295,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: c6adc3ba787a4b54f8a4a806f5dd6a6b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -464,6 +495,7 @@ Transform:
   m_Children:
   - {fileID: 4036898882662117964}
   - {fileID: 375913582303881138}
+  - {fileID: 8934242950344128211}
   m_Father: {fileID: 4036898882891250091}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -551,6 +583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4036898882533928475}
   - component: {fileID: 4036898882533928472}
+  - component: {fileID: 657339526443890985}
   - component: {fileID: 4036898882533928473}
   - component: {fileID: 5703874060247369998}
   m_Layer: 7
@@ -597,6 +630,40 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &657339526443890985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4036898882533928470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c38cb8bd986e5004da98f4cd52c2e26d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buffDuration: 5
+  buffCooldown: 20
+  baseWeapon: {fileID: 4036898883131094946}
+  gameManager: {fileID: 0}
+  skillStompRadius: 5
+  stompStunDuration: 2
+  stompDamageAmount: 10
+  stompAvailable: 1
+  stompCooldown: 5
+  stompEffect: {fileID: 1159970587636746, guid: e7473d9620ab29341b98bf21b400e598,
+    type: 3}
+  stompEffectTransform: {fileID: 4036898883422061363}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  skill1: {fileID: 6607024945063839171}
+  skill2: {fileID: 2672356606427772761}
+  skill3: {fileID: 4888048394512541879}
+  missilePrefab: {fileID: 7869448456036739658, guid: 3a4eea37670ca40479aa163b44a3ca43,
+    type: 3}
+  launchPoint: {fileID: 8934242950344128211}
+  missileSpeed: 10
 --- !u!114 &4036898882533928473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -624,9 +691,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   hpBar: {fileID: 555995767372020072}
+  middleManScenehandler: {fileID: 11400000, guid: 6810b7892222f3d429061b22fdc80688,
+    type: 2}
+  mainCamera: {fileID: 4036898882891250086}
   velocity: {x: 0, y: 0, z: 0}
   isGrounded: 0
-  healEffect: {fileID: 0}
 --- !u!208 &5703874060247369998
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1218,15 +1287,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.8990898, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: d3ccb0246ad61e645b97e541fedb8b8c, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

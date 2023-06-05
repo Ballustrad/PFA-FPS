@@ -10,21 +10,24 @@ public class SkillsNormal : MonoBehaviour
     public float explosionRadius = 10f;
     public float explosionDelay = 1f;
     public LayerMask enemyLayer;
-    //public GameObject explosionParticle;
-   // public AudioClip explosionSound;
     public LayerMask layerToHit;
     public float grenadeCooldown = 15f;
     private bool grenadeAvailable = true;
     public GameObject grenadePara;
     public GameObject spawnPointGrenade;
     #endregion
+    [Space]
     public  GameManager gameManager;
+    [Space]
     public float duration = 5f;
     public float reductionAmount = 15f;
     public float cooldown = 15f;
     private bool isOnCooldown = false;
     private float cooldownTimer = 0f;
 
+    [Space]
+    public GameObject dmgReductionEffect;
+    [Space]
 
     public Image skill1;
     public Image skill2;
@@ -71,6 +74,11 @@ public class SkillsNormal : MonoBehaviour
     {
         var player = GetComponent<PlayerMovement>(); // Replace Player avec le nom de ton script de joueur
         player.damageReduction += reductionAmount;
+        if (dmgReductionEffect != null)
+        {
+            GameObject effect = Instantiate(dmgReductionEffect, transform.position, Quaternion.identity, transform);
+            Destroy(effect, 2f); // Détruit l'effet de guérison après une seconde
+        }
         yield return new WaitForSeconds(duration);
         player.damageReduction -= reductionAmount;
     }

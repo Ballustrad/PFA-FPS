@@ -17,7 +17,7 @@ public class BaseWeapon : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public int currentAmmo;
     public int maxAmmo;
-    public int reloadTime;
+    public float reloadTime;
     public bool isReloading = false;
     public GameObject impactEffect;
     public AudioSource audioSource;
@@ -110,21 +110,21 @@ public class BaseWeapon : MonoBehaviour
 
     internal void ModifyFireRate(float v)
     {
-        throw new NotImplementedException();
+        fireRate += v;
     }
 
     internal void ModifyReloadSpeed(float v)
     {
-        throw new NotImplementedException();
+        reloadTime -= v;
     }
 
-    internal void ResetFireRate()
+    internal void ResetFireRate(float v)
     {
-        throw new NotImplementedException();
+        fireRate -= v;
     }
 
-    internal void ResetReloadSpeed()
+    internal void ResetReloadSpeed(float v)
     {
-        throw new NotImplementedException();
+        reloadTime += v;
     }
 }

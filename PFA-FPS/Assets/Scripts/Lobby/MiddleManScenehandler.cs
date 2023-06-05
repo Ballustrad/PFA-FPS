@@ -15,6 +15,7 @@ public class MiddleManScenehandler : ScriptableObject
     public bool canUseSkill1 = false;
     public bool canUseSkill2 = false;
     public bool canUseSkill3 = false;
+    public bool level4IsHere = false;
 
 
 }
