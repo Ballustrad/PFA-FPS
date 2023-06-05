@@ -12,6 +12,35 @@ public class MainMenuManager : Singleton<MainMenuManager>
     public GameObject Selection;
     public CurrentPlayerMiddleMan currentPlayerMiddleMan;
 
+    [Space]
+    public GameObject gameplayPanel;
+    public GameObject commandsPanel;
+    public GameObject lobbyPanel;
+
+
+    public void PanelSwap(string Panel)
+    {
+        if (Panel == "Transition1")
+        {
+            gameplayPanel.SetActive(false);
+            commandsPanel.SetActive(true);
+        }
+        if (Panel == "Transition2")
+        {
+            gameplayPanel.SetActive(true) ;
+            commandsPanel.SetActive(false);
+        }
+        if (Panel == "Transition3")
+        {
+            commandsPanel.SetActive(false);
+            lobbyPanel.SetActive(true);
+        }
+        if (Panel == "Transition4")
+        {
+            commandsPanel.SetActive(true);
+            lobbyPanel.SetActive(false);
+        }
+    }
     public void Quit()
     {
         Application.Quit();

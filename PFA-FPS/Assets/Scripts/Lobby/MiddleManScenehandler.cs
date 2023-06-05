@@ -11,7 +11,10 @@ public class MiddleManScenehandler : ScriptableObject
     public float indexLevel = 0;
     public  bool levelIsStarted;
     public  float pointOfRound;
-    public   float currentPoint;
-   
-    
+    public  float currentPoint;
+    public bool canUseSkill1 = false;
+    public bool canUseSkill2 = false;
+    public bool canUseSkill3 = false;
+
+
 }

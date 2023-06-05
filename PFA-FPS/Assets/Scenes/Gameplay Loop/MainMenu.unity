@@ -2032,9 +2032,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 30, y: 30}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &738345409
 MonoBehaviour:
@@ -2056,7 +2056,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '>>'
+  m_text: <<
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2083,10 +2083,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48.65
+  m_fontSize: 24
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -3601,7 +3601,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1255792854}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1708023219}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: PanelSwap
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Transition2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1255792854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4150,7 +4162,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1378485299}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1708023219}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: PanelSwap
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Transition3
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1378485299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5236,7 +5260,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1575178597}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1708023219}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: PanelSwap
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Transition1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1575178597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5581,7 +5617,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -55, y: 46}
+  m_AnchoredPosition: {x: -1651.33, y: 46}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1602249574
@@ -5627,7 +5663,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1602249575}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1708023219}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: PanelSwap
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Transition4
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1602249575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5837,6 +5885,9 @@ MonoBehaviour:
   Selection: {fileID: 1055754157}
   currentPlayerMiddleMan: {fileID: 11400000, guid: b8eeda8dd394468478bbd72558c65fe9,
     type: 2}
+  gameplayPanel: {fileID: 1356778135}
+  commandsPanel: {fileID: 1452109639}
+  lobbyPanel: {fileID: 2040362117}
 --- !u!4 &1708023220
 Transform:
   m_ObjectHideFlags: 0

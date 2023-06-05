@@ -1,25 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillsFast : MonoBehaviour
 {
     public PlayerMovement playerMovement;
 
-    public float healingPercentage = 0.35f;
-
+    public float healingPercentage = 50f;
+    public GameObject skill1;
+    public GameObject skill2;
+    public GameObject skill3;
+    private Color originalS1;
+    private Color originalS2;
+    private Color originalS3;
     private bool isOnCooldownHeal = false;
     private float cooldownHeal = 10f;
+    public GameManager gameManager;
 
+
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+
+        originalS1 = skill1.GetComponent<Image>().color;
+        originalS2 = skill2.GetComponent<Image>().color;
+        originalS3 = skill3.GetComponent<Image>().color;
+
+    }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1) && !isOnCooldownHeal)
+        if (Input.GetMouseButtonDown(1) && gameManager.canUseSkill1 == true && !isOnCooldownHeal)
         {
             UseHealingAbility();
+            skill1.GetComponent<Image>().color = Color.red;
         }
-        if (Input.GetKeyDown(KeyCode.A) && !isOnCooldownFreeze)
+        if (Input.GetKeyDown(KeyCode.A) && gameManager.canUseSkill2 == true && !isOnCooldownFreeze)
         {
             UseDisableEnemiesAbility();
+            skill2.GetComponent<Image>().color = Color.red;
         }
 
         if (isDashing)
@@ -34,9 +53,11 @@ public class SkillsFast : MonoBehaviour
             }
             else
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                skill3.GetComponent<Image>().color = originalS3;
+                if (Input.GetKeyDown(KeyCode.E) && gameManager.canUseSkill3 == true)
                 {
                     StartDash();
+                    skill3.GetComponent<Image>().color = Color.red;
                 }
             }
         }
@@ -60,6 +81,7 @@ public class SkillsFast : MonoBehaviour
     private void ResetCooldownHeal()
     {
         isOnCooldownHeal = false;
+        skill1.GetComponent<Image>().color = originalS1;
     }
 
 
@@ -98,6 +120,8 @@ public class SkillsFast : MonoBehaviour
     private void ResetCooldown()
     {
         isOnCooldownFreeze = false;
+        skill2.GetComponent<Image>().color = originalS2;
+
     }
 
     public float dashDistance = 50f; // Distance du dash

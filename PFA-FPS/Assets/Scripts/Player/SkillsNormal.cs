@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillsNormal : MonoBehaviour
 {
@@ -17,13 +18,35 @@ public class SkillsNormal : MonoBehaviour
     public GameObject grenadePara;
     public GameObject spawnPointGrenade;
     #endregion
+    public  GameManager gameManager;
+    public float duration = 5f;
+    public float reductionAmount = 15f;
+    public float cooldown = 15f;
+    private bool isOnCooldown = false;
+    private float cooldownTimer = 0f;
 
-   
+
+    public Image skill1;
+    public Image skill2;
+    public Image skill3;
+    private Color originalS1;
+    private Color originalS2;
+    private Color originalS3;
+
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+        originalS1 = skill1.GetComponent<Image>().color;
+        originalS2 = skill2.GetComponent<Image>().color;
+        originalS3 = skill3.GetComponent<Image>().color;
+    }
+
 
     IEnumerator GrenadeCooldown()
     {
         yield return new WaitForSeconds(grenadeCooldown);
         grenadeAvailable = true;
+        skill1.GetComponent<Image>().color = originalS1;
     }
 
     public void ThrowGrenade()
@@ -41,11 +64,6 @@ public class SkillsNormal : MonoBehaviour
    
 
 
-    public float duration = 5f;
-    public float reductionAmount = 15f;
-    public float cooldown = 15f;
-    private bool isOnCooldown = false;
-    private float cooldownTimer = 0f;
 
    
 
@@ -65,11 +83,13 @@ public class SkillsNormal : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A) && !isOnCooldown)
+        if (Input.GetKeyDown(KeyCode.A) && gameManager.canUseSkill2 == true  && !isOnCooldown)
         {
+            
             isOnCooldown = true;
             cooldownTimer = cooldown;
             StartCoroutine(ApplyDamageReduction());
+            skill2.GetComponent<Image>().color = Color.red;
         }
 
         if (isOnCooldown)
@@ -78,19 +98,22 @@ public class SkillsNormal : MonoBehaviour
             if (cooldownTimer <= 0f)
             {
                 isOnCooldown = false;
+                skill2.GetComponent<Image>().color = originalS2;
             }
         }
 
 
-        if (Input.GetMouseButtonDown(1) && grenadeAvailable)
+        if (Input.GetMouseButtonDown(1) && gameManager.canUseSkill1 == true && grenadeAvailable)
         {
             ThrowGrenade();
             grenadeAvailable = false;
             StartCoroutine(GrenadeCooldown());
+            skill1.GetComponent<Image>().color = Color.red;
         }
-        if (Input.GetKeyDown(KeyCode.E) && !isOnCooldownMark)
+        if (Input.GetKeyDown(KeyCode.E) && gameManager.canUseSkill3 == true && !isOnCooldownMark)
         {
             StartCoroutine(UseMarkAbility());
+            skill3.GetComponent<Image>().color = Color.red;
         }
     }
 
@@ -129,6 +152,7 @@ public class SkillsNormal : MonoBehaviour
         isOnCooldownMark = true;
         yield return new WaitForSeconds(cooldownMark);
         isOnCooldownMark = false;
+        skill3.GetComponent<Image>().color = originalS3;
     }
 }
 

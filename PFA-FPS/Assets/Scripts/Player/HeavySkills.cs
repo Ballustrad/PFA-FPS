@@ -12,10 +12,12 @@ public class HeavySkills : MonoBehaviour
     private float buffCooldownTimer = 0f;
 
     private BaseWeapon baseWeapon;
+    public GameManager gameManager;
 
     private void Awake()
     {
         baseWeapon = GetComponent<BaseWeapon>();
+        gameManager = GameManager.Instance;
     }
 
     private void Update()
@@ -32,7 +34,7 @@ public class HeavySkills : MonoBehaviour
             }
             else
             {
-                if (Input.GetMouseButton(1))
+                if (Input.GetMouseButton(1) && gameManager.canUseSkill1 == true)
                 {
                     StartBuff();
                 }
@@ -69,4 +71,7 @@ public class HeavySkills : MonoBehaviour
             baseWeapon.ResetReloadSpeed();
         }
     }
+
+
+
 }

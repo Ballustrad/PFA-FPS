@@ -21,16 +21,15 @@ public class GameManager : MonoBehaviour
 
     public CurrentPlayerMiddleMan currentPlayerMiddleMan;
 
-    /*public GameObject uiIconSkills;
-    public Image iconSkillLeftClick;
-    public Image iconSkillRightClick;
-    public Image iconSkillA;
-    public Image iconSkillE;*/
+    
     public TextMeshProUGUI ammo;
     public AudioClip deathSound; // Son à jouer à la mort de l'ennemi
     public AudioSource audioSource;
     public MiddleManScenehandler middleManScenehandler;
     public bool healthDecay = false;
+    public bool canUseSkill1;
+    public bool canUseSkill2 ;
+    public bool canUseSkill3 ;
 
 
     public TimerUi timerUi;
@@ -68,10 +67,12 @@ public class GameManager : MonoBehaviour
         GameObject newplayer = Instantiate(GetPlayerPrefab(selectedPlayer), spawnPoint, Quaternion.identity, parent);
         player = newplayer;
         currentPlayer = newplayer.transform;
-        //uiIconSkills.SetActive(true);
+        canUseSkill1 = middleManScenehandler.canUseSkill1;
+        canUseSkill2 = middleManScenehandler.canUseSkill2;
+        canUseSkill3 = middleManScenehandler.canUseSkill3;
     }
 
-    private GameObject GetPlayerPrefab(string playerName)
+    public GameObject GetPlayerPrefab(string playerName)
     {
         switch (playerName)
         {
@@ -134,6 +135,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("s1" + canUseSkill1);
+        Debug.Log("s2" + canUseSkill2);
+        Debug.Log("s3" + canUseSkill3);
         if (healthDecay == true)
         {
             timer += Time.deltaTime;

@@ -11,6 +11,8 @@ public class ScoreManager : MonoBehaviour
     
     public GameManager gameManager;
     public TextMeshProUGUI textScore;
+    public TextMeshProUGUI textScoreShop
+        ;
     public MiddleManScenehandler middleManScenehandler;
 
 
@@ -53,7 +55,12 @@ public class ScoreManager : MonoBehaviour
     {
         if(textScore != null)
         {
-            textScore.text = middleManScenehandler.currentPoint.ToString();  
+            textScore.text = middleManScenehandler.currentPoint.ToString();
+            
+        }
+        if (textScoreShop != null)
+        {
+            textScoreShop.text = middleManScenehandler.currentPoint.ToString();
         }
     }
     public void AddPoints(float amount)

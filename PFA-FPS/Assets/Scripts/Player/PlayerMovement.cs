@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
+//using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,10 +33,7 @@ public class PlayerMovement : MonoBehaviour
         jumpHeight = characterData.jumpHeight;
         maxHealth = characterData.health;
         currentHealth = maxHealth;
-       /* gameManager.iconSkillRightClick = characterData.iconSkillRightClick;
-        gameManager.iconSkillLeftClick = characterData.iconSkillLeftClick;
-        gameManager.iconSkillE = characterData.iconSkillE;
-        gameManager.iconSkillA = characterData.iconSkillA;*/
+       
         hpBar.SetState(currentHealth, maxHealth);
     }
     
