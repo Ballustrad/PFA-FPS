@@ -3,46 +3,98 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : MonoBehaviour
 {
     public GameObject normal;
     public GameObject fast;
-    public GameObject lourd;
+    public GameObject heavy;
     public Vector3 spawnPoint = new Vector3(0, 0, 0);
-    public GameObject panelSelection;
+
+
+
     public Transform parent;
     public Transform currentPlayer;
     public GameObject player;
-   
-    public GameObject uiIconSkills;
+
+    public CurrentPlayerMiddleMan currentPlayerMiddleMan;
+
+    /*public GameObject uiIconSkills;
     public Image iconSkillLeftClick;
     public Image iconSkillRightClick;
     public Image iconSkillA;
-    public Image iconSkillE;
+    public Image iconSkillE;*/
     public TextMeshProUGUI ammo;
     public AudioClip deathSound; // Son à jouer à la mort de l'ennemi
     public AudioSource audioSource;
+    public MiddleManScenehandler middleManScenehandler;
+    public bool healthDecay = false;
 
-    public void SelectCharacter(GameObject name)
+
+    public TimerUi timerUi;
+
+    private static GameManager instance;
+
+    public static GameManager Instance
     {
-        GameObject player = Instantiate(name, spawnPoint, Quaternion.identity, parent);
-        panelSelection.SetActive(false);
-        currentPlayer = player.transform;
-      
-        uiIconSkills.SetActive(true);
-        
+        get { return instance; }
     }
 
-   public void EnemyDeathSound()
+    private void Awake()
+    {
+
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+
+
+
+        if (timerUi != null)
+        {
+
+            timerUi.StartLevel();
+
+        }
+
+
+        string selectedPlayer = PlayerPrefs.GetString("SelectedPlayer", "fast");
+        GameObject newplayer = Instantiate(GetPlayerPrefab(selectedPlayer), spawnPoint, Quaternion.identity, parent);
+        player = newplayer;
+        currentPlayer = newplayer.transform;
+        //uiIconSkills.SetActive(true);
+    }
+
+    private GameObject GetPlayerPrefab(string playerName)
+    {
+        switch (playerName)
+        {
+            case "fast":
+                return fast;
+            case "normal":
+                return normal;
+            case "heavy":
+                return heavy;
+            default:
+                return fast;
+        }
+    }
+
+    public void EnemyDeathSound()
     {
         if (deathSound != null && audioSource != null)
         {
             audioSource.PlayOneShot(deathSound);
         }
     }
-    
+
+
 
 
     public GameObject[] enemyPrefabs; // Tableau des prefabs des ennemis disponibles
@@ -52,12 +104,21 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
+        if (enemyPrefabs != null && spawnPoints != null && enemyPrefabs.Length > 0 && spawnPoints.Length > 0)
+        {
+            InvokeRepeating("SpawnEnemy", initialDelay, spawnInterval);
+        }
         
-        InvokeRepeating("SpawnEnemy", initialDelay, spawnInterval);
     }
 
     private void SpawnEnemy()
     {
+        if (spawnPoints.Length == 0)
+        {
+            Debug.LogError("No spawn points assigned in GameManager.");
+            return;
+        }
+
         // Sélectionne un emplacement de spawn aléatoire
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
@@ -68,6 +129,32 @@ public class GameManager : Singleton<GameManager>
         Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
     }
 
-  
-    
+    public float interval = 1f; // Intervalle de temps en secondes
+    private float timer = 0f; // Compteur de temps
+
+    private void Update()
+    {
+        if (healthDecay == true)
+        {
+            timer += Time.deltaTime;
+
+            if (timer >= interval)
+            {
+                // Déclencher l'action
+                PerformAction();
+                timer = 0f;
+            }
+        }
+        
+    }
+
+    private void PerformAction()
+    {
+        // Code pour l'action à effectuer chaque seconde
+        player.GetComponent<PlayerMovement>().TakeDamage(5);
+        // Ajoutez ici le code de l'action que vous souhaitez exécuter chaque seconde
+    }
+
+
+
 }
