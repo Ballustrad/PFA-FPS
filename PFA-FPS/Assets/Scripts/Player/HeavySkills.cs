@@ -31,7 +31,10 @@ public class HeavySkills : MonoBehaviour
     private Color originalS1;
     private Color originalS2;
     private Color originalS3;
-    
+    public GameObject skill1Locked;
+    public GameObject skill2Locked;
+    public GameObject skill3Locked;
+
     [Space]
     public GameObject missilePrefab; // Préfabriqué du missile
     public Transform launchPoint; // Point de lancement du missile
@@ -54,6 +57,21 @@ public class HeavySkills : MonoBehaviour
 
     private void Update()
     {
+        if (gameManager.canUseSkill1 == true)
+        {
+            skill1Locked.SetActive(false);
+            skill1.SetActive(true);
+        }
+        if (gameManager.canUseSkill2 == true)
+        {
+            skill2Locked.SetActive(false);
+            skill2.SetActive(true);
+        }
+        if (gameManager.canUseSkill3 == true)
+        {
+            skill3Locked.SetActive(false);
+            skill3.SetActive(true);
+        }
         if (isBuffActive)
         {
             UpdateBuff();

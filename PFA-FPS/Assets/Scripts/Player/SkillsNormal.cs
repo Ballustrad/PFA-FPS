@@ -28,10 +28,12 @@ public class SkillsNormal : MonoBehaviour
     [Space]
     public GameObject dmgReductionEffect;
     [Space]
-
-    public Image skill1;
-    public Image skill2;
-    public Image skill3;
+    public GameObject skill1Locked;
+    public GameObject skill2Locked;
+    public GameObject skill3Locked;
+    public GameObject skill1;
+    public GameObject skill2;
+    public GameObject skill3;
     private Color originalS1;
     private Color originalS2;
     private Color originalS3;
@@ -91,6 +93,21 @@ public class SkillsNormal : MonoBehaviour
 
     private void Update()
     {
+        if (gameManager.canUseSkill1 == true)
+        {
+            skill1Locked.SetActive(false);
+            skill1.SetActive(true);
+        }
+        if (gameManager.canUseSkill2 == true)
+        {
+            skill2Locked.SetActive(false);
+            skill2.SetActive(true);
+        }
+        if (gameManager.canUseSkill3 == true)
+        {
+            skill3Locked.SetActive(false);
+            skill3.SetActive(true);
+        }
         if (Input.GetKeyDown(KeyCode.A) && gameManager.canUseSkill2 == true  && !isOnCooldown)
         {
             

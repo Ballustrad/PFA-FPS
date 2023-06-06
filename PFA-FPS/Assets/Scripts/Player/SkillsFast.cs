@@ -15,6 +15,9 @@ public class SkillsFast : MonoBehaviour
     private Color originalS1;
     private Color originalS2;
     private Color originalS3;
+    public GameObject skill1Locked;
+    public GameObject skill2Locked;
+    public GameObject skill3Locked;
     [Space] 
 
     private bool isOnCooldownHeal = false;
@@ -36,6 +39,21 @@ public class SkillsFast : MonoBehaviour
     
     private void Update()
     {
+        if (gameManager.canUseSkill1 == true) 
+        {
+            skill1Locked.SetActive(false);
+            skill1.SetActive(true);
+        }
+        if (gameManager.canUseSkill2 == true)
+        {
+            skill2Locked.SetActive(false);
+            skill2.SetActive(true);
+        }
+        if (gameManager.canUseSkill3 == true)
+        {
+            skill3Locked.SetActive(false);
+            skill3.SetActive(true);
+        }
         if (Input.GetMouseButtonDown(1) && gameManager.canUseSkill1 == true && !isOnCooldownHeal)
         {
             UseHealingAbility();
