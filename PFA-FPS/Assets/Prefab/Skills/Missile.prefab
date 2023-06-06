@@ -128,4 +128,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionRadius: 8
-  damageAmount: 20
+  damageAmount: 50
+  missileExplosion: {fileID: 6611553023533044638, guid: 4593e9dae66f9bd418685aae51dcdbe9,
+    type: 3}

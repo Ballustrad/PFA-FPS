@@ -876,9 +876,9 @@ MonoBehaviour:
   buffCooldown: 20
   baseWeapon: {fileID: 7717276707117695925}
   gameManager: {fileID: 0}
-  skillStompRadius: 5
+  skillStompRadius: 15
   stompStunDuration: 2
-  stompDamageAmount: 10
+  stompDamageAmount: 50
   stompAvailable: 1
   stompCooldown: 5
   stompEffect: {fileID: 1159970587636746, guid: e7473d9620ab29341b98bf21b400e598,
@@ -886,7 +886,7 @@ MonoBehaviour:
   stompEffectTransform: {fileID: 4036898883422061363}
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   skill1: {fileID: 6607024945063839171}
   skill2: {fileID: 2672356606427772761}
   skill3: {fileID: 4888048394512541879}
@@ -896,7 +896,7 @@ MonoBehaviour:
   missilePrefab: {fileID: 7869448456036739658, guid: 3a4eea37670ca40479aa163b44a3ca43,
     type: 3}
   launchPoint: {fileID: 8934242950344128211}
-  missileSpeed: 10
+  missileSpeed: 50
 --- !u!114 &4036898882533928473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2333,7 +2333,7 @@ PrefabInstance:
     - target: {fileID: 6630511150091088655, guid: e2a5f9223d4b86949990b5d25393ecef,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.89
+      value: 0.41
       objectReference: {fileID: 0}
     - target: {fileID: 6630511150091088655, guid: e2a5f9223d4b86949990b5d25393ecef,
         type: 3}

@@ -6,11 +6,13 @@ public class Missile : MonoBehaviour
 {
     public float explosionRadius = 8f; // Rayon de l'explosion
     public float damageAmount = 20f; // Montant des dégâts à infliger
-    private void OnCollisionEnter(Collision collision)
+    public GameObject missileExplosion;
+    private void OnTriggerEnter(Collider other)
     {
         // Vérifier si le missile a collisionné avec un ennemi
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Ground"))
         {
+            GameObject effect = Instantiate(missileExplosion, transform.position, Quaternion.identity, transform);
             // Obtenir tous les ennemis dans la zone d'explosion
             Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
 
@@ -21,6 +23,7 @@ public class Missile : MonoBehaviour
                 if (enemy != null)
                 {
                     enemy.TakeDamage(damageAmount);
+                    Destroy(this.gameObject);
                 }
             }
         }
