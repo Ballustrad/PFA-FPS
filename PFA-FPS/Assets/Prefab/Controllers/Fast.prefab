@@ -718,7 +718,7 @@ MonoBehaviour:
   maxAmmo: 0
   reloadTime: 0
   isReloading: 0
-  impactEffect: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7,
+  impactEffect: {fileID: 5288883792705921800, guid: 061ef4a39e1ae3d418a72470940d449e,
     type: 3}
   audioSource: {fileID: 2306891805479513145}
   shootSound: {fileID: 8300000, guid: a4ce11a5b4070474f8c79c76703da211, type: 3}
