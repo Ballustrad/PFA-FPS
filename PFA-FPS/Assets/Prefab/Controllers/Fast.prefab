@@ -1197,7 +1197,7 @@ MonoBehaviour:
   dashDistance: 50
   dashDuration: 1
   dashCooldown: 10
-  dashPrefab: {fileID: 794968728568146383, guid: ff5654df7cf29e9459d8e398dfe96a01,
+  dashPrefab: {fileID: 1733872358247503959, guid: 8f92066ba880a924f91fab03cbd11c9a,
     type: 3}
   controller: {fileID: 4036898882533928472}
 --- !u!114 &4036898882533928473
@@ -1297,7 +1297,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4036898882863021336}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
