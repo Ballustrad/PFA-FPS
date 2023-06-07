@@ -13,6 +13,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
     public CurrentPlayerMiddleMan currentPlayerMiddleMan;
     public GameObject moddleN;
     public GameObject moddleH;
+    public GameObject moddleW;
     [Space]
     public GameObject gameplayPanel;
     public GameObject commandsPanel;
@@ -85,6 +86,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
             MainMenu.SetActive(false);
             moddleH.SetActive(true);
             moddleN.SetActive(true);
+            moddleW.SetActive(true);
             Selection.SetActive(true);
         }
         if (_String == "ReturnSelection")
@@ -92,6 +94,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
             MainMenu.SetActive(true);
             moddleN.SetActive(false);
             moddleH.SetActive(false);
+            moddleW.SetActive(false);
             Selection.SetActive(false);
         }
 
