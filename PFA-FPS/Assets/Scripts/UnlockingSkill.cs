@@ -26,7 +26,9 @@ public class UnlockingSkill : MonoBehaviour
     public TextMeshProUGUI skillName2;
     public TextMeshProUGUI skillName3;
 
-
+    public TextMeshProUGUI txt1;
+    public TextMeshProUGUI txt2;
+    public TextMeshProUGUI txt3;
     [Space]
     public Sprite skillNormal1;
     public Sprite skillNormal2;
@@ -60,6 +62,9 @@ public class UnlockingSkill : MonoBehaviour
                 Holder1.sprite = skillFast1;
                 Holder2.sprite = skillFast2;
                 Holder3.sprite = skillFast3;
+                txt1.text = "Instantly recover 20% of your life points (Cooldown: 12 seconds)";
+                txt2.text = "Paralyze all enemies in your field of vision for 2,5 seconds (Cooldown: 20 seconds)";
+                txt3.text = "Perform a forward dash (Cooldown: 5 seconds)";
                 skillName1.text = "Harmonic Heal: "+ costSkill1 + " Points.";
                 skillName2.text = "Fantastic Freeze: " + costSkill2 + " Points.";
                 skillName3.text = "Dashing Dash: " + costSkill3 + " Points.";
@@ -68,6 +73,9 @@ public class UnlockingSkill : MonoBehaviour
                 Holder1.sprite = skillNormal1;
                 Holder2.sprite = skillNormal2;
                 Holder3.sprite = skillNormal3;
+                txt1.text = "Launch a stunt grendade forward that explodes on impact, stunning enemies for 1,5 seconds (Cooldown: 9 seconds)";
+                txt2.text = "Grant yourself an armor boost for 5 seconds, reducing damaged received by 20% (Cooldown: 15 seconds)";
+                txt3.text = "Apply a mark on targeted enemy, increasing the damage he takes by 25% (Cooldown: 7 seconds)";
                 skillName1.text = "Splendid Stun: " + costSkill1 + " Points.";
                 skillName2.text = "Adorable Armor: " + costSkill2 + " Points.";
                 skillName3.text = "Smilly Sigil: " + costSkill3 + " Points.";
@@ -76,6 +84,9 @@ public class UnlockingSkill : MonoBehaviour
                 Holder1.sprite = SkillHeavy1;
                 Holder2.sprite = SkillHeavy2;
                 Holder3.sprite = SkillHeavy3;
+                txt1.text = "Incresae your fire rate by 25% and reload Speed by 50% for 5 seconds (Cooldown: 15 seconds)";
+                txt2.text = "Hit the ground and unleash a shockwave that stuns nearby enemies for 2 seconds and deals 40 damage (Cooldown: 13 Seconds )";
+                txt3.text = "Fire a missile that explodes on impact and inflict 75 damage to the ennemies (Cooldown: 7 seconds)";
                 skillName1.text = "Radiant Rate: " + costSkill1 + " Points.";
                 skillName2.text = "Sweet Stomp: " + costSkill2 + " Points.";
                 skillName3.text = "Majestic Missile: " + costSkill3 + " Points.";
