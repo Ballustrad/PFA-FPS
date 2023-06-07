@@ -12,6 +12,8 @@ public class Cac : MonoBehaviour
     public PlayerMovement playerMovement;
     public GameManager gameManager;
 
+    public Animator animator;
+
     public void Awake()
     {
         gameManager = GameManager.Instance;
@@ -33,10 +35,15 @@ public class Cac : MonoBehaviour
         if (canAttack && other.gameObject.CompareTag("Player"))
         {
             Debug.Log("playerhit");
+            animator.SetBool("isAttacking",true);
             playerMovement.TakeDamage(meleeDamage);
             Debug.Log("hit is" + other.gameObject.name);
             canAttack = false;
             Invoke("ResetAttack", attackInterval);
+        }
+        else
+        {
+            animator.SetBool("isAttacking", false);
         }
     }
 
