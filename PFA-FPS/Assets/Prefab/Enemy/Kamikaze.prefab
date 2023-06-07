@@ -292,7 +292,7 @@ MonoBehaviour:
   damageMultiplier: 1
   deathExplosion: {fileID: 1421917349152839519, guid: afe70fc13c6710e49bfb563d816be9cc,
     type: 3}
-  valuePoints: 50
+  valuePoints: 20
   healthBar: {fileID: 4111781496764558777}
   gameManager: {fileID: 0}
   scoreManager: {fileID: 0}
