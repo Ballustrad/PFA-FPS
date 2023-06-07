@@ -152,8 +152,8 @@ public class HeavySkills : MonoBehaviour
         buffCooldownTimer = buffCooldown;
 
         // Appliquer les modifications de la cadence de tir et de la vitesse de rechargement
-        baseWeapon.ModifyFireRate(5f); // Exemple : Double la cadence de tir
-        baseWeapon.ModifyReloadSpeed(2f); // Exemple : Réduit le temps de rechargement de moitié
+        baseWeapon.ModifyFireRate(3f); // Exemple : Double la cadence de tir
+        baseWeapon.ModifyReloadSpeed(1.5f); // Exemple : Réduit le temps de rechargement de moitié
     }
 
     private void UpdateBuff()

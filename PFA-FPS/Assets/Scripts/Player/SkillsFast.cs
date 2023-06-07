@@ -21,11 +21,14 @@ public class SkillsFast : MonoBehaviour
     [Space] 
 
     private bool isOnCooldownHeal = false;
-    private float cooldownHeal = 10f;
+    public float cooldownHeal = 10f;
     public GameManager gameManager;
 
-    
 
+    public AudioSource sourceDash;
+    public AudioClip dashSFX;
+    public AudioClip healSFX;
+    public AudioClip freezeSFX;
 
     private void Awake()
     {
@@ -57,11 +60,13 @@ public class SkillsFast : MonoBehaviour
         if (Input.GetMouseButtonDown(1) && gameManager.canUseSkill1 == true && !isOnCooldownHeal)
         {
             UseHealingAbility();
+            sourceDash.PlayOneShot(healSFX);
             skill1.GetComponent<Image>().color = Color.red;
         }
         if (Input.GetKeyDown(KeyCode.A) && gameManager.canUseSkill2 == true && !isOnCooldownFreeze)
         {
             UseDisableEnemiesAbility();
+            sourceDash.PlayOneShot(freezeSFX);
             skill2.GetComponent<Image>().color = Color.red;
         }
 
@@ -81,6 +86,7 @@ public class SkillsFast : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E) && gameManager.canUseSkill3 == true)
                 {
                     StartDash();
+                    sourceDash.PlayOneShot(dashSFX);
                     skill3.GetComponent<Image>().color = Color.red;
                 }
             }

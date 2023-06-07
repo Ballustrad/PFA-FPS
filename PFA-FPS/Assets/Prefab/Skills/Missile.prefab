@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de20435e5b9e2a94694768fafa6e6907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionRadius: 8
-  damageAmount: 50
+  explosionRadius: 13
+  damageAmount: 75
   missileExplosion: {fileID: 6611553023533044638, guid: 4593e9dae66f9bd418685aae51dcdbe9,
     type: 3}

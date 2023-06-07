@@ -19,7 +19,9 @@ public class Target : MonoBehaviour
     public UIHealthBar healthBar;
     public GameManager gameManager;
     public ScoreManager scoreManager;
-
+    public AudioSource stunSource;
+    public AudioClip stunSFX;
+    
     public GameObject effectParalyze;
 
     private void Update()
@@ -59,6 +61,7 @@ public class Target : MonoBehaviour
         // Vérifie si la cible n'est pas déjà paralysée
         if (!isParalyzed)
         {
+            stunSource.PlayOneShot(stunSFX);
             // Définit la variable isParalyzed à true
             isParalyzed = true;
             GameObject effect = Instantiate(effectParalyze, transform.position, Quaternion.identity, transform);

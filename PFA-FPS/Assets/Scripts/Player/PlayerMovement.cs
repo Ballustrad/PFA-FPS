@@ -4,7 +4,9 @@ using System.Collections.Generic;
 //using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -28,7 +30,15 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private Vector3 velocity;
     [SerializeField] public bool isGrounded;
-   
+
+    public AudioSource source;
+    public AudioSource source2;
+    public AudioClip footstepSound; // Son de pas à jouer
+    public AudioClip jumpsound;
+    public AudioClip hitSound;
+    public float footstepInterval = 0.5f; // Intervalle entre chaque pas
+    private float footstepTimer = 0f;
+
     private void Start()
     {
          gameManager = GameManager.Instance;
@@ -104,6 +114,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        source2.PlayOneShot(hitSound);
         damage = damage - damageReduction;
         currentHealth = currentHealth - damage;
         hpBar.SetState(currentHealth, maxHealth);
@@ -116,7 +127,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject);
+        Loose();
+    }
+    public GameObject losePanel;
+    private void Loose()
+    {
+        Time.timeScale = 0f; // Met la vitesse du temps à zéro, ce qui met le jeu en pause
+        UnityEngine.Cursor.lockState = CursorLockMode.None; // Débloque la souris
+        UnityEngine.Cursor.visible = true; // Rend le curseur visible
+        losePanel.SetActive(true);
     }
 
     // Update is called once per frame
@@ -137,13 +156,30 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded) 
         {
+            
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+        if (isGrounded && (x != 0 || z != 0))
+        {
+            footstepTimer += Time.deltaTime;
+
+            if (footstepTimer >= footstepInterval)
+            {
+                PlayFootstepSound();
+                footstepTimer = 0f;
+            }
+        }
     }
 
-    
+    private void PlayFootstepSound()
+    {
+        source.PlayOneShot(footstepSound);
+    }
 }
+
+    
+

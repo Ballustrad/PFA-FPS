@@ -22,6 +22,8 @@ public class BaseWeapon : MonoBehaviour
     public GameObject impactEffect;
     public AudioSource audioSource;
     public AudioClip shootSound;
+    public AudioClip reloadSound;
+    public GameObject reloading;
 
     public WeaponRecoil weaponRecoil;
     private float nextTimeToFire = 0f;
@@ -76,13 +78,15 @@ public class BaseWeapon : MonoBehaviour
 
     IEnumerator ReloadGun()
     {
-        
-   
+
+            audioSource.PlayOneShot(reloadSound);
+        reloading.SetActive(true);
             isReloading = true;
             yield return new WaitForSeconds(reloadTime);
             currentAmmo = maxAmmo;
             gameManager.ammo.text = currentAmmo.ToString() + "/" + maxAmmo.ToString();
             isReloading =false;
+        reloading.SetActive(false);
         
     }
     public Transform BulletSpawn;

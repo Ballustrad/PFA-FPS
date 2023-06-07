@@ -37,7 +37,8 @@ public class SkillsNormal : MonoBehaviour
     private Color originalS1;
     private Color originalS2;
     private Color originalS3;
-
+    public AudioSource shieldSource;
+    public AudioClip shieldClip;
     private void Awake()
     {
         gameManager = GameManager.Instance;
@@ -114,6 +115,7 @@ public class SkillsNormal : MonoBehaviour
             isOnCooldown = true;
             cooldownTimer = cooldown;
             StartCoroutine(ApplyDamageReduction());
+            shieldSource.PlayOneShot(shieldClip);
             skill2.GetComponent<Image>().color = Color.red;
         }
 

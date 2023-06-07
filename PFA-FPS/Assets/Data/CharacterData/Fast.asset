@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93fbf938907db754087e9eeae66ff3eb, type: 3}
   m_Name: Fast
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 17
   jumpHeight: 3
   health: 200
   iconSkillLeftClick: {fileID: 0}

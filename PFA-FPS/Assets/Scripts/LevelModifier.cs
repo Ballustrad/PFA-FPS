@@ -44,7 +44,7 @@ public class LevelModifier : MonoBehaviour
         }
         if (middleManScenehandler.indexLevel == 6)
         {
-            manager.spawnInterval = 1f;
+            manager.spawnInterval = 0.5f;
         }
         if (middleManScenehandler.indexLevel == 7)
         {
@@ -77,7 +77,7 @@ public class LevelModifier : MonoBehaviour
         }
         if (middleManScenehandler.indexLevel == 6)
         {
-            manager.spawnInterval = 5f;
+            manager.spawnInterval = 2.5f;
         }
         if (middleManScenehandler.indexLevel == 7)
         {

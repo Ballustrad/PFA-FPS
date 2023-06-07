@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c08c74944457641af6b55afa71f517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 150
   currentHealth: 0
   damageMultiplier: 1
   deathExplosion: {fileID: 1421917349152839519, guid: afe70fc13c6710e49bfb563d816be9cc,
@@ -296,6 +296,8 @@ MonoBehaviour:
   healthBar: {fileID: 4111781496764558777}
   gameManager: {fileID: 0}
   scoreManager: {fileID: 0}
+  stunSource: {fileID: -7175824834305109601}
+  stunSFX: {fileID: 8300000, guid: c4731868d7e0d35479da065b1b6731fc, type: 3}
   effectParalyze: {fileID: 7054578972039783742, guid: 57bd1adf2fca58e4bba48830a177f1aa,
     type: 3}
   damageTextPrefab: {fileID: 3583796486341815643, guid: a73b6fdb49a44754f8e5a9b7619c231c,
@@ -326,7 +328,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.64
-  m_Speed: 7
+  m_Speed: 12
   m_Acceleration: 40
   avoidancePriority: 50
   m_AngularSpeed: 700
@@ -382,7 +384,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5250084681447401391, guid: 862a6ece7a1d0df4588510f70a8c6b76,
     type: 3}
   shootingDistance: 10
-  shootingCooldown: 2
+  shootingCooldown: 1.5
   shootSource: {fileID: -7175824834305109601}
   shootClip: {fileID: 8300000, guid: ee30b70cd28637d4c8b018cddb8c0016, type: 3}
 --- !u!82 &-7175824834305109601
@@ -395,15 +397,15 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ee30b70cd28637d4c8b018cddb8c0016, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.491
+  m_Volume: 0.082
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 38
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

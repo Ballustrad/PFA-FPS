@@ -11,8 +11,10 @@ public class ScoreManager : MonoBehaviour
     
     public GameManager gameManager;
     public TextMeshProUGUI textScore;
-    public TextMeshProUGUI textScoreShop
-        ;
+    public TextMeshProUGUI textScoreShop;
+    public TextMeshProUGUI textScoreFinal;
+
+        
     public MiddleManScenehandler middleManScenehandler;
 
 
@@ -49,6 +51,7 @@ public class ScoreManager : MonoBehaviour
         if (textScore != null) 
         {
             textScore.text = middleManScenehandler.pointOfRound.ToString();
+            textScoreFinal.text = "Score:" + middleManScenehandler.pointOfRound.ToString();
         }
     }
     public void UpdateScoreTextTotal()

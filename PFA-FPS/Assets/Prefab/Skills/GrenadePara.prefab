@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af7993dd5f048f4c86ab2c614e07b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paralysisDuration: 5
+  paralysisDuration: 1.5
   explosionRadius: 10
   explosionDelay: 1
   enemyLayer:

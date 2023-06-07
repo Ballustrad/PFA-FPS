@@ -3,17 +3,22 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System;
+using JetBrains.Annotations;
+using UnityEngine.UI;
 
 public class TimerUi : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
-    private float levelDuration = 30f; // Durée du niveau en secondes (3 minutes)
+    private float levelDuration = 180f; // Durée du niveau en secondes (3 minutes)
     private float levelTimer = 0f; // Compteur de temps pour le niveau
     public bool levelIsStarted;
     public GameManager gameManager;
     public ScoreManager scoreManager;
     public MiddleManScenehandler middleManScenehandler;
-
+    public GameObject chronotimer;
+    [Space]
+    public GameObject panelEnd;
+    public TextMeshProUGUI currentLevel;
     private void Awake()
     {
         gameManager = GameManager.Instance;
@@ -58,6 +63,11 @@ public class TimerUi : MonoBehaviour
         }
 
         // Afficher un écran de fin de niveau ou effectuer d'autres actions spécifiques à la fin du niveau
+        panelEnd.SetActive(true);
+        currentLevel.text = "level" + middleManScenehandler.indexLevel.ToString() + "Completed";
+        chronotimer.GetComponent<Image>().enabled = false;
+        chronotimer.GetComponentInChildren<Text>().enabled = false;
+        
         // ...
         middleManScenehandler.currentPoint += middleManScenehandler.pointOfRound;
         // Charger la scène du lobby après un délai de 5 secondes
