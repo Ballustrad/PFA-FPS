@@ -111,6 +111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  damage: 35
+  damage: 25
   playerMovement: {fileID: 0}
   gameManager: {fileID: 0}

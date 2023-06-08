@@ -40,7 +40,7 @@ public class LevelModifier : MonoBehaviour
         }
         if (middleManScenehandler.indexLevel == 5)
         {
-            tpHandler.SetActive(true);
+            
         }
         if (middleManScenehandler.indexLevel == 6)
         {
@@ -73,7 +73,7 @@ public class LevelModifier : MonoBehaviour
         }
         if (middleManScenehandler.indexLevel == 5)
         {
-            tpHandler.SetActive(false);
+            
         }
         if (middleManScenehandler.indexLevel == 6)
         {

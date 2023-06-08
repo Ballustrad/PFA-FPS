@@ -288,17 +288,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c08c74944457641af6b55afa71f517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 120.1
   currentHealth: 0
   damageMultiplier: 1
   deathExplosion: {fileID: 1421917349152839519, guid: afe70fc13c6710e49bfb563d816be9cc,
     type: 3}
-  valuePoints: 20
+  valuePoints: 15
   healthBar: {fileID: 4111781496764558777}
   gameManager: {fileID: 0}
   scoreManager: {fileID: 0}
   stunSource: {fileID: 3573229137203595237}
-  stunSFX: {fileID: 8300000, guid: c4731868d7e0d35479da065b1b6731fc, type: 3}
+  stunSFX: {fileID: 8300000, guid: 524135784010e4947a573f26f3b3c2fb, type: 3}
   effectParalyze: {fileID: 7054578972039783742, guid: 57bd1adf2fca58e4bba48830a177f1aa,
     type: 3}
   damageTextPrefab: {fileID: 3583796486341815643, guid: a73b6fdb49a44754f8e5a9b7619c231c,

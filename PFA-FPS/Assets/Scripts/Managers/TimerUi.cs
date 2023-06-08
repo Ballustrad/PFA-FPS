@@ -65,8 +65,7 @@ public class TimerUi : MonoBehaviour
         // Afficher un écran de fin de niveau ou effectuer d'autres actions spécifiques à la fin du niveau
         panelEnd.SetActive(true);
         currentLevel.text = "level" + middleManScenehandler.indexLevel.ToString() + "Completed";
-        chronotimer.GetComponent<Image>().enabled = false;
-        chronotimer.GetComponentInChildren<Text>().enabled = false;
+        
         
         // ...
         middleManScenehandler.currentPoint += middleManScenehandler.pointOfRound;

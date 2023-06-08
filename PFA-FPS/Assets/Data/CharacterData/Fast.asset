@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 17
   jumpHeight: 3
-  health: 200
+  health: 300
   iconSkillLeftClick: {fileID: 0}
   iconSkillRightClick: {fileID: 0}
   iconSkillA: {fileID: 0}

@@ -15,6 +15,9 @@ public class BaseWeapon : MonoBehaviour
     public LayerMask layerToHit;
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;
+    public ParticleSystem muzzleFlash2;
+    public Transform muzzleFlashTransform;
+    public Transform muzzleFlashTransform2;
     public int currentAmmo;
     public int maxAmmo;
     public float reloadTime;
@@ -92,9 +95,26 @@ public class BaseWeapon : MonoBehaviour
     public Transform BulletSpawn;
     public GameObject BulletPrefab;
     public float BulletSpeed = 10f, DestroyBulletAfterSeconds = 2f;
+    private void PlayAndDestroyParticleSystem()
+    {
+        ParticleSystem newParticleSystem = Instantiate(muzzleFlash, muzzleFlashTransform.position, muzzleFlashTransform.rotation);
+        newParticleSystem.Play();
+        if (muzzleFlash2 != null && muzzleFlashTransform2 != null)
+        {
+            ParticleSystem newParticleSystem2 = Instantiate(muzzleFlash2, muzzleFlashTransform2.position, muzzleFlashTransform2.rotation);
+            newParticleSystem2.Play();
+            Destroy(newParticleSystem2.gameObject, newParticleSystem2.main.duration);
+        }
+
+
+        // Détruit le GameObject contenant la Particle System une fois qu'elle a terminé de jouer
+        Destroy(newParticleSystem.gameObject, newParticleSystem.main.duration);
+        
+    }
     public void Shoot()
     {
-        if (muzzleFlash != null) { muzzleFlash.Play(); }
+        if (muzzleFlash != null) 
+        {PlayAndDestroyParticleSystem(); }
 
         if (shootSound != null && audioSource != null)
         {
