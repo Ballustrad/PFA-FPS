@@ -3380,7 +3380,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ecca07cd522156447b3e0c5a9785212d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.35
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3491,7 +3491,7 @@ MonoBehaviour:
     type: 3}
   audioSource: {fileID: 3111967774036125656}
   shootSound: {fileID: 8300000, guid: ecca07cd522156447b3e0c5a9785212d, type: 3}
-  reloadSound: {fileID: 8300000, guid: 55580cea0850b054aa452576035f7229, type: 3}
+  reloadSound: {fileID: 8300000, guid: 005af8f811f7b5e42a166b4845541491, type: 3}
   reloading: {fileID: 4082183955238577469}
   weaponRecoil: {fileID: 0}
   BulletSpawn: {fileID: 375913582303881138}
